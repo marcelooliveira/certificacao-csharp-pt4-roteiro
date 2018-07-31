@@ -59,6 +59,32 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Q01.md" />
+    <None Include="Q02.md" />
+    <None Include="Q03.md" />
+    <None Include="Q04.md" />
+    <None Include="Q05.md" />
+    <None Include="Q06.md" />
+    <None Include="Q07.md" />
+    <None Include="Q08.md" />
+    <None Include="Q09.md" />
+    <None Include="Q11.md" />
+    <None Include="Q12.md" />
+    <None Include="Q13.md" />
+    <None Include="Q14.md" />
+    <None Include="Q15.md" />
+    <None Include="Q16.md" />
+    <None Include="Q17.md" />
+    <None Include="Q18.md" />
+    <None Include="Q19.md" />
+    <None Include="Q20.md" />
+    <None Include="Q21.md" />
+    <None Include="Q22.md" />
+    <None Include="Q23.md" />
+    <None Include="Q24.md" />
+    <None Include="Q25.md" />
+    <None Include="Q26.md" />
+    <None Include="Q27.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
