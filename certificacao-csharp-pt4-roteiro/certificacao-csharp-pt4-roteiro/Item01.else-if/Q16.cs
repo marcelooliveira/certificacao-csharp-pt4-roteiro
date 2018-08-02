@@ -7,25 +7,25 @@
 
         }
 
-        /*01*/  private static decimal CalculateInterest(decimal loanAmount, int loanTerm)
-        /*02*/  {
-        /*03*/      decimal interestAmount;
-        /*04*/      decimal loanRate;
-        /*05*/      if (loanTerm > 0 && loanTerm < 5 && loanAmount < 5000m)
-        /*06*/      {
-        /*07*/          loanRate = 0.045m;
-        /*08*/      }
-        /*09*/      else if (loanTerm > 5 && loanAmount > 5000m)
-        /*10*/      {
-        /*11*/          loanRate = 0.085m;
-        /*12*/      }
-        /*13*/      else
-        /*14*/      {
-        /*15*/          loanRate = 0.055m;
-        /*16*/      }
-        /*17*/      interestAmount = loanAmount * loanRate * loanTerm;
-        /*18*/      return interestAmount;
-        /*19*/  }
+        private static decimal CalculateInterest(decimal loanAmount, int loanTerm)
+        {
+            decimal interestAmount;
+            decimal loanRate;
+            if (loanTerm > 0 && loanTerm < 5 && loanAmount < 5000m)
+            {
+                loanRate = 0.045m;
+            }
+            else if (loanTerm > 5 && loanAmount > 5000m)
+            {
+                loanRate = 0.085m;
+            }
+            else
+            {
+                loanRate = 0.055m; //loanRate = 0.0825m;
+            }
+            interestAmount = loanAmount * loanRate * loanTerm;
+            return interestAmount;
+        }
     }
 }
 
