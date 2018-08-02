@@ -11,14 +11,14 @@ namespace Q24
             {
                 Console.SetOut(writer);
                 using (FileStream stream = new FileStream(@"C:\file.txt", FileMode.Open))
-            {
-                using (StreamReader reader = new StreamReader(stream))
                 {
-                    while (!reader.EndOfStream) Console.WriteLine(reader.ReadLine());
+                    using (StreamReader reader = new StreamReader(stream))
+                    {
+                        while (!reader.EndOfStream) Console.WriteLine(reader.ReadLine());
+                    }
                 }
             }
         }
-    }
     }
 }
 

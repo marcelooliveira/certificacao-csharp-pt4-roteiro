@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 
-namespace Q4
+namespace P04.Q4
 {
     class Programa
     {
@@ -23,6 +23,31 @@ namespace Q4
                     throw;
                 }
             }
+        }
+    }
+
+    class ClasseBase
+    {
+        public void Funcao1()
+        {
+            Console.WriteLine("ClasseBase.Funcao1");
+        }
+        public virtual void Funcao2()
+        {
+            Console.WriteLine("ClasseBase.Funcao2");
+        }
+    }
+
+    class ClasseFilha : ClasseBase
+    {
+        public new void Funcao1()
+        {
+            Console.WriteLine("ClasseFilha.Funcao1");
+        }
+
+        public override void Funcao2()
+        {
+            Console.WriteLine("ClasseFilha.Funcao2");
         }
     }
 }
