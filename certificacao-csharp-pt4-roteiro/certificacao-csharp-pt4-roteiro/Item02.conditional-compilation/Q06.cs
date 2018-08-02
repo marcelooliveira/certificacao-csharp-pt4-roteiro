@@ -9,18 +9,18 @@ namespace Q06
 
         }
 
-        private static decimal CalculateInterest(decimal loanAmount, int loanTerm, decimal loanRate)
+        private static decimal CalcularValorComJuros(decimal valorEmprestimo, int prazoEmprestimo, decimal jurosDoEmprestimo)
         {
-            decimal interestAmount = loanAmount * loanRate * loanTerm;
+            decimal valorComJuros = valorEmprestimo * jurosDoEmprestimo * prazoEmprestimo;
             #if DEBUG
-            LogLine("Interest Amount : ", interestAmount.ToString("c"));
+            GravarLog("Valor com juros : ", valorComJuros.ToString("c"));
             #endif
-            return interestAmount;
+            return valorComJuros;
         }
 
-        public static void LogLine(string message, string detail)
+        public static void GravarLog(string mensagem, string detalhe)
         {
-            Console.WriteLine("Log: {0} - {1}", message, detail);
+            Console.WriteLine("Log: {0} - {1}", mensagem, detalhe);
         }
     }
 }

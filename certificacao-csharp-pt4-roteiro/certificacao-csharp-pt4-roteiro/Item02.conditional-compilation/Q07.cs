@@ -4,9 +4,9 @@
     {
         public void Executar()
         {
-            string imgPath = "";
+            string caminhoImg = "";
             #if (DEBUG)
-                imgPath = "TempFolder/Images/";
+                caminhoImg = "TempFolder/Images/";
             #else
                 imgPath = "DevFolder/Images/":
             #endif

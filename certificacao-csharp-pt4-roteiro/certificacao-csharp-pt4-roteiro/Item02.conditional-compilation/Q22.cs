@@ -7,9 +7,9 @@ namespace Q22
         public void Executar()
         {
 #if (DEBUG)
-            Console.WriteLine("Entering debug mode");
+            Console.WriteLine("Entrando em modo DEBUG");
 #else
-            Console.WriteLine("Entering release mode"):
+            Console.WriteLine("Entrando em modo RELEASE"):
 #endif
         }
     }

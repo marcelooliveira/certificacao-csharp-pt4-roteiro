@@ -6,29 +6,29 @@ namespace Q26
     {
         public void Executar()
         {
-            #if TRIAL
-                EvaluateLoan();
-            #elif BASIC
-                EvaluateLoan();
-                ProcessLoan();
-                FundLoan();
-            #else
-                EvaluateLoan();
-                ProcessLoan();
-            #endif
+#if TRIAL
+                AvaliarEmprestimo();
+#elif BASIC
+                AvaliarEmprestimo();
+                ProcessarEmprestimo();
+                FinanciarEmprestimo();
+#else
+            AvaliarEmprestimo();
+            ProcessarEmprestimo();
+#endif
         }
 
-        private void FundLoan()
+        private void FinanciarEmprestimo()
         {
             throw new NotImplementedException();
         }
 
-        private void ProcessLoan()
+        private void ProcessarEmprestimo()
         {
             throw new NotImplementedException();
         }
 
-        private void EvaluateLoan()
+        private void AvaliarEmprestimo()
         {
             throw new NotImplementedException();
         }
