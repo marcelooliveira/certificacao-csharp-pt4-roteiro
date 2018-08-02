@@ -34,22 +34,22 @@
     //# RESPOSTA:
 
     //```
-    public string GetResponse(char letter)
+    public string GetResposta(char letra)
     {
-        string response;
-        switch (letter)
+        string resposta;
+        switch (letra)
         {
             case 'a':
-                response = "animal";
+                resposta = "animal";
                 break;
             case 'm':
-                response = "mineral";
+                resposta = "mineral";
                 break;
             default:
-                response = "invalid choice";
+                resposta = "escolha inválida";
                 break;
         }
-        return response;
+        return resposta;
     }
     //```
 }

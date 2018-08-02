@@ -7,22 +7,22 @@
 
         }
 
-        string GetStatusName(int statusCode)
+        string GetNomeStatus(int codigoStatus)
         {
-            string statusText = "";
-            switch (statusCode)
+            string nomeStatus = "";
+            switch (codigoStatus)
             {
                 case 0:
-                    statusText = "Error";
+                    nomeStatus = "Erro";
                     break;
                 case 1:
-                    statusText = "Success";
+                    nomeStatus = "Sucesso";
                     break;
                 default:
-                    statusText = "Unauthorized";
+                    nomeStatus = "Não autorizado";
                     break;
             }
-            return statusText;
+            return nomeStatus;
         }
     }
 }

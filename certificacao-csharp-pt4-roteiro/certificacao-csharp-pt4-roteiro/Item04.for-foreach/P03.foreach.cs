@@ -10,14 +10,14 @@ namespace certificacao_csharp_pt4_roteiro
     {
         static void Executar()
         {
-            var fibNumbers = new List<int> { 0, 1, 1, 2, 3, 5, 8, 13 };
+            var fibonacci = new List<int> { 0, 1, 1, 2, 3, 5, 8, 13 };
             int count = 0;
-            foreach (int element in fibNumbers)
+            foreach (int element in fibonacci)
             {
                 count++;
-                Console.WriteLine($"Element #{count}: {element}");
+                Console.WriteLine($"Elemento No.{count}: {element}");
             }
-            Console.WriteLine($"Number of elements: {count}");
+            Console.WriteLine($"Número de elementos: {count}");
 
         }
     }

@@ -8,7 +8,7 @@ namespace Q05
         {
             try
             {
-                DoWork();
+                FacaAlgo();
             }
             catch (AluraValidationException ex)
             {
@@ -29,7 +29,7 @@ namespace Q05
             throw new NotImplementedException();
         }
 
-        private void DoWork()
+        private void FacaAlgo()
         {
             throw new NotImplementedException();
         }

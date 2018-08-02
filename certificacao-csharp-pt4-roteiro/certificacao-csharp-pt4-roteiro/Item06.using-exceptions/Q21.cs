@@ -4,9 +4,9 @@ namespace Q21
 {
     class Program
     {
-        static void ProcessOrders(string orderRefNumber)
+        static void ProcessOrders(string numeroPedido)
         {
-            if (orderRefNumber == null)
+            if (numeroPedido == null)
             {
                 throw new ArgumentNullException();
             }
@@ -17,16 +17,16 @@ namespace Q21
         {
             try
             {
-                string orderRefNumber = null;
-                ProcessOrders(orderRefNumber);
+                string numeroPedido = null;
+                ProcessOrders(numeroPedido);
             }
             catch (ArgumentException e) //catch (ArgumentNullException e)
             {
-                Console.WriteLine("{0} An exception caught.", e);
+                Console.WriteLine("{0} Ocorreu uma exceção.", e);
             }
             catch (Exception e)
             {
-                Console.WriteLine("{0} An exception caught.", e);
+                Console.WriteLine("{0} Ocorreu uma exceção.", e);
             }
         }
     }

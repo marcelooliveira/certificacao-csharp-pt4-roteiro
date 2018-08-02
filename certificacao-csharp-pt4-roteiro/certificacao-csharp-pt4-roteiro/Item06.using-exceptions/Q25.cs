@@ -10,10 +10,10 @@ namespace Q25
             {
 
             }
-            //catch(DivideByZeroException e) {Console.WriteLine("Divide by zero");}
-            catch (ArithmeticException e) { Console.WriteLine("Arithmetic error"); }
-            catch (ArgumentException e) { Console.WriteLine("Bad Argument"); }
-            catch (Exception e) { Console.WriteLine("General error"); }
+            //catch(DivideByZeroException e) {Console.WriteLine("Divisão por zero");}
+            catch (ArithmeticException e) { Console.WriteLine("Erro aritmético"); }
+            catch (ArgumentException e) { Console.WriteLine("Argumento inválido"); }
+            catch (Exception e) { Console.WriteLine("Erro comum"); }
         }
     }
 }

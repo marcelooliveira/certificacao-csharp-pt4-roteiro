@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Q15
 {
@@ -6,51 +7,55 @@ namespace Q15
     {
         public void Executar()
         {
-            Collection<Customer> customerCollection = new Collection<Customer>();
-            Collection<Account> customerAccounts = new Collection<Account>();
-            customerAccounts.Add(new Account(1000m, 2, 0.025m));
-            customerAccounts.Add(new Account(3000m, 4, 0.045m));
-            customerAccounts.Add(new Account(5000m, 6, 0.045m));
-            customerCollection.Add(new Customer("David", "Jones", customerAccounts));
-            Collection<Account> largeCustomerAccounts = new Collection<Account>();
-
-            foreach (Customer customer in customerCollection)
+            IList<Customer> clientes = new List<Customer>();
+            IList<Conta> contas = new List<Conta>
             {
-                foreach (Account account in customer.AccountCollection)
+                new Conta(1000m, 2, 0.025m),
+                new Conta(3000m, 4, 0.045m),
+                new Conta(5000m, 6, 0.045m)
+            };
+
+            clientes.Add(new Customer("David", "Jones", contas));
+
+            Collection<Conta> contasEspeciais = new Collection<Conta>();
+
+            foreach (Customer cliente in clientes)
+            {
+                foreach (Conta conta in cliente.Contas)
                 {
-                    if (account.Balance >= 1000000m)
+                    if (conta.Saldo >= 1000000m)
                     {
-                        largeCustomerAccounts.Add(account);
+                        contasEspeciais.Add(conta);
                     }
                 }
             }
         }
     }
 
-    class Account
+    class Conta
     {
-        public Account(decimal balance, int term, decimal rate)
+        public Conta(decimal saldo, int periodo, decimal juros)
         {
-            Term = term;
-            Balance = balance;
-            Rate = rate;
+            Periodo = periodo;
+            Saldo = saldo;
+            Juros = juros;
         }
-        public decimal Balance { get; set; }
-        public decimal Rate { get; set; }
-        public int Term { get; set; }
+        public decimal Saldo { get; set; }
+        public decimal Juros { get; set; }
+        public int Periodo { get; set; }
     }
 
     class Customer
     {
-        public Customer(string firstName, string lastName, Collection<Account> accounts)
+        public Customer(string nome, string sobrenome, IList<Conta> contas)
         {
-            FirstName = firstName;
-            LastName = lastName;
-            AccountCollection = accounts;
+            Nome = nome;
+            Sobrenome = sobrenome;
+            Contas = contas;
         }
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public Collection<Account> AccountCollection { get; set; }
+        public string Nome { get; set; }
+        public string Sobrenome { get; set; }
+        public IList<Conta> Contas { get; set; }
     }
 }
 

@@ -6,25 +6,25 @@ namespace Q18
     {
         public void Executar()
         {
-            int valor = GetValor("Active");
+            int valor = GetValor("Ativo");
         }
 
         private int GetValor(string status)
         {
-            Int32 returnStatus = Int32.MinValue;
+            Int32 statusRetorno = Int32.MinValue;
             switch (status)
             {
-                case "Active":
-                    returnStatus = 1;
+                case "Ativo":
+                    statusRetorno = 1;
                     break;
-                case "Inactive":
-                    returnStatus = 0;
+                case "Inativo":
+                    statusRetorno = 0;
                     break;
                 default:
-                    returnStatus = -1;
+                    statusRetorno = -1;
                     break;
             }
-            return returnStatus;
+            return statusRetorno;
         }
     }
 }

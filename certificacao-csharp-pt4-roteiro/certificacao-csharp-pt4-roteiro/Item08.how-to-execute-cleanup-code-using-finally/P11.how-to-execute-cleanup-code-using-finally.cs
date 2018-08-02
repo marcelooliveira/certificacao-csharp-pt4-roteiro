@@ -12,7 +12,7 @@ namespace certificacao_csharp_pt4_roteiro
         {
         }
 
-        static void CodeWithoutCleanup()
+        static void CodigoSemLimpeza()
         {
             System.IO.FileStream file = null;
             System.IO.FileInfo fileInfo = new System.IO.FileInfo("C:\\file.txt");
@@ -23,7 +23,7 @@ namespace certificacao_csharp_pt4_roteiro
             file.Close();
         }
 
-        static void CodeWithCleanup()
+        static void CodigoComLimpeza()
         {
             System.IO.FileStream file = null;
             System.IO.FileInfo fileInfo = null;

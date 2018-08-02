@@ -7,22 +7,22 @@
 
         }
 
-        private string GetMemberType(int memberCode)
+        private string GetTipoDoMembro(int codigoMembro)
         {
-            string memberType;
-            switch (memberCode)
+            string tipoDoMembro;
+            switch (codigoMembro)
             {
                 case 0:
-                    memberType = "Non-Member";
+                    tipoDoMembro = "Não-Membro";
                     break;
                 case 1:
-                    memberType = "Member";
+                    tipoDoMembro = "Membro";
                     break;
                 default:
-                    memberType = "Invalid";
+                    tipoDoMembro = "Inválido";
                     break;
             }
-            return memberType;
+            return tipoDoMembro;
         }
     }
 }
