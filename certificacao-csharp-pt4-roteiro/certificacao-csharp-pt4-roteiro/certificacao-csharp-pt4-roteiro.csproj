@@ -43,12 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="P09.creating-and-throwing-exceptions\Q04.cs" />
-    <Compile Include="P11.how-to-execute-cleanup-code-using-finally\P11.how-to-execute-cleanup-code-using-finally.cs" />
-    <Compile Include="P07.using-exceptions\P10.how-to-handle-an-exception-using-try-catch.cs" />
-    <Compile Include="P09.creating-and-throwing-exceptions\P09.creating-and-throwing-exceptions.cs" />
-    <Compile Include="P07.using-exceptions\P08.exception-handling.cs" />
-    <Compile Include="P07.using-exceptions\P07.using-exceptions.cs" />
+    <Compile Include="Item07.creating-and-throwing-exceptions\Q04.cs" />
+    <Compile Include="Item08.how-to-execute-cleanup-code-using-finally\P11.how-to-execute-cleanup-code-using-finally.cs" />
+    <Compile Include="Item06.using-exceptions\P10.how-to-handle-an-exception-using-try-catch.cs" />
+    <Compile Include="Item07.creating-and-throwing-exceptions\P09.creating-and-throwing-exceptions.cs" />
+    <Compile Include="Item06.using-exceptions\P08.exception-handling.cs" />
+    <Compile Include="Item06.using-exceptions\P07.using-exceptions.cs" />
     <Compile Include="Item05.switch-case-default\P06.switch-case-default.cs" />
     <Compile Include="Item01.else-if\P05.else-if.cs" />
     <Compile Include="Item03.while-do\P04.while.cs" />
@@ -63,14 +63,14 @@
     <Compile Include="Item05.switch-case-default\Q01.cs" />
     <None Include="Item05.switch-case-default\Q01.md" />
     <Compile Include="Item01.else-if\Q02.cs" />
-    <None Include="P09.creating-and-throwing-exceptions\Q04.md" />
+    <None Include="Item07.creating-and-throwing-exceptions\Q04.md" />
     <None Include="Item01.else-if\Q02.md" />
-    <Compile Include="P07.using-exceptions\Q03.cs" />
-    <None Include="P07.using-exceptions\Q03.md" />
+    <Compile Include="Item06.using-exceptions\Q03.cs" />
+    <None Include="Item06.using-exceptions\Q03.md" />
     <Compile Include="Item03.while-do\Q04.cs" />
     <None Include="Item03.while-do\Q04.md" />
-    <Compile Include="P07.using-exceptions\Q05.cs" />
-    <None Include="P07.using-exceptions\Q05.md" />
+    <Compile Include="Item06.using-exceptions\Q05.cs" />
+    <None Include="Item06.using-exceptions\Q05.md" />
     <Compile Include="Item02.conditional-compilation\Q06.cs" />
     <None Include="Item02.conditional-compilation\Q06.md" />
     <Compile Include="Item02.conditional-compilation\Q07.cs" />
@@ -79,8 +79,8 @@
     <None Include="Item01.else-if\Q12.md" />
     <Compile Include="Item05.switch-case-default\Q13.cs" />
     <None Include="Item05.switch-case-default\Q13.md" />
-    <Compile Include="P07.using-exceptions\Q14.cs" />
-    <None Include="P07.using-exceptions\Q14.md" />
+    <Compile Include="Item06.using-exceptions\Q14.cs" />
+    <None Include="Item06.using-exceptions\Q14.md" />
     <Compile Include="Item04.for-foreach\Q15.cs" />
     <None Include="Item04.for-foreach\Q15.md" />
     <Compile Include="Item01.else-if\Q16.cs" />
@@ -89,18 +89,18 @@
     <None Include="Item01.else-if\Q17.md" />
     <Compile Include="Item05.switch-case-default\Q18.cs" />
     <None Include="Item05.switch-case-default\Q18.md" />
-    <Compile Include="P11.how-to-execute-cleanup-code-using-finally\Q20.cs" />
-    <None Include="P11.how-to-execute-cleanup-code-using-finally\Q20.md" />
-    <Compile Include="P07.using-exceptions\Q21.cs" />
-    <None Include="P07.using-exceptions\Q21.md" />
+    <Compile Include="Item08.how-to-execute-cleanup-code-using-finally\Q20.cs" />
+    <None Include="Item08.how-to-execute-cleanup-code-using-finally\Q20.md" />
+    <Compile Include="Item06.using-exceptions\Q21.cs" />
+    <None Include="Item06.using-exceptions\Q21.md" />
     <Compile Include="Item02.conditional-compilation\Q22.cs" />
     <None Include="Item02.conditional-compilation\Q22.md" />
     <Compile Include="Item05.switch-case-default\Q23.cs" />
     <None Include="Item05.switch-case-default\Q23.md" />
     <Compile Include="Item03.while-do\Q24.cs" />
     <None Include="Item03.while-do\Q24.md" />
-    <Compile Include="P07.using-exceptions\Q25.cs" />
-    <None Include="P07.using-exceptions\Q25.md" />
+    <Compile Include="Item06.using-exceptions\Q25.cs" />
+    <None Include="Item06.using-exceptions\Q25.md" />
     <Compile Include="Item02.conditional-compilation\Q26.cs" />
     <None Include="Item02.conditional-compilation\Q26.md" />
   </ItemGroup>

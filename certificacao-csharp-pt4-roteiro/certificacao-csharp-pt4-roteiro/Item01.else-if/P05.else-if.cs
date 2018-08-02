@@ -10,15 +10,15 @@ namespace certificacao_csharp_pt4_roteiro
     {
         static void Executar()
         {
-            bool condition = true;
+            bool condicao = true;
 
-            if (condition)
+            if (condicao)
             {
-                Console.WriteLine("The variable is set to true.");
+                Console.WriteLine("A variável foi definida como verdadeiro.");
             }
             else
             {
-                Console.WriteLine("The variable is set to false.");
+                Console.WriteLine("A variável foi definida como falso.");
             }
 
 
@@ -28,23 +28,23 @@ namespace certificacao_csharp_pt4_roteiro
 
 
 
-            // if-else statement  
-            if (condition)
+            // instrução if-else  
+            if (condicao)
             {
-                //then - statement;
+                //instrução then;
             }
             else
-            {  
-                //else-statement;
-            }
-            // Next statement in the program.  
-
-            // if statement without an else  
-            if (condition)
             {
-                //then - statement;
+                //instrução else;
             }
-            // Next statement in the program.
+            // Próxima instrução do programa. 
+
+            // instrução if sem um else  
+            if (condicao)
+            {
+                //instrução then;
+            }
+            // Próxima instrução do programa. 
 
 
 
@@ -53,24 +53,24 @@ namespace certificacao_csharp_pt4_roteiro
 
 
 
-            // Try with m = 12 and then with m = 8.
+            // Tenta com m = 12 e depois com m = 8
             int m = 12;
             int n = 18;
 
             if (m > 10)
                 if (n > 20)
                 {
-                    Console.WriteLine("Result1");
+                    Console.WriteLine("Resultado 1");
                 }
                 else
                 {
-                    Console.WriteLine("Result2");
+                    Console.WriteLine("Resultado 2");
                 }
 
 
 
 
-            // Try with m = 12 and then with m = 8.
+            // Tenta com m = 12 e depois com m = 8
             if (m > 10)
             {
                 if (n > 20)
@@ -84,34 +84,34 @@ namespace certificacao_csharp_pt4_roteiro
 
 
 
-            Console.Write("Enter a character: ");
+            Console.Write("Digite um caractere: ");
             char c = (char)Console.Read();
             if (Char.IsLetter(c))
             {
                 if (Char.IsLower(c))
                 {
-                    Console.WriteLine("The character is lowercase.");
+                    Console.WriteLine("O caractere é minúsculo.");
                 }
                 else
                 {
-                    Console.WriteLine("The character is uppercase.");
+                    Console.WriteLine("O caractere é maiúsculo.");
                 }
             }
             else
             {
-                Console.WriteLine("The character isn't an alphabetic character.");
+                Console.WriteLine("O caractere não é alfabético.");
             }
 
-            //Sample Output:
+            //Saída:
 
-            //Enter a character: 2
-            //The character isn't an alphabetic character.
+            //Digite um caractere: 2
+            //O caractere não é alfabético.
 
-            //Enter a character: A
-            //The character is uppercase.
+            //Digite um caractere: A
+            //O caractere é maiúsculo.
 
-            //Enter a character: h
-            //The character is lowercase.
+            //Digite um caractere: h
+            //O caractere é minúsculo.
 
 
 
@@ -120,28 +120,28 @@ namespace certificacao_csharp_pt4_roteiro
 
 
             // Change the values of these variables to test the results.
-            bool Condition1 = true;
-            bool Condition2 = true;
-            bool Condition3 = true;
-            bool Condition4 = true;
+            bool Condicao1 = true;
+            bool Condicao2 = true;
+            bool Condicao3 = true;
+            bool Condicao4 = true;
 
-            if (Condition1)
+            if (Condicao1)
             {
-                // Condition1 is true.
+                // Condicao1 é verdadeira.
             }
-            else if (Condition2)
+            else if (Condicao2)
             {
-                // Condition1 is false and Condition2 is true.
+                // Condicao1 é falsa e Condicao2 é verdadeira.
             }
-            else if (Condition3)
+            else if (Condicao3)
             {
-                if (Condition4)
+                if (Condicao4)
                 {
-                    // Condition1 and Condition2 are false. Condition3 and Condition4 are true.
+                    // Condicao1 e Condicao2 são falsas. Condicao3 e Condicao4 são verdadeiras.
                 }
                 else
                 {
-                    // Condition1, Condition2, and Condition4 are false. Condition3 is true.
+                    // Condicao1, Condicao2, e Condition4 são falsas. Condicao3 é verdadeira.
                 }
             }
             else
@@ -156,89 +156,84 @@ namespace certificacao_csharp_pt4_roteiro
 
 
 
-            Console.Write("Enter a character: ");
+            Console.Write("Digite um caractere: ");
             char ch = (char)Console.Read();
 
             if (Char.IsUpper(ch))
             {
-                Console.WriteLine("The character is an uppercase letter.");
+                Console.WriteLine("O caractere é maiúsculo.");
             }
             else if (Char.IsLower(ch))
             {
-                Console.WriteLine("The character is a lowercase letter.");
+                Console.WriteLine("O caractere é minúsculo.");
             }
             else if (Char.IsDigit(ch))
             {
-                Console.WriteLine("The character is a number.");
+                Console.WriteLine("O caractere é um número.");
             }
             else
             {
-                Console.WriteLine("The character is not alphanumeric.");
+                Console.WriteLine("O caractere não é alfanumérico.");
             }
 
-            //Sample Input and Output:
-            //Enter a character: E
-            //The character is an uppercase letter.
 
-            //Enter a character: e
-            //The character is a lowercase letter.
 
-            //Enter a character: 4
-            //The character is a number.
 
-            //Enter a character: =
-            //The character is not alphanumeric.
+            //Saída
+            //=====
+            //Digite um caractere: E
+            //O caractere é maiúsculo
+
+            //Digite um caractere: e
+            //O caractere é minúsculo
+
+            //Digite um caractere: 4
+            //O caractere é um número
+
+            //Digite um caractere: =
+            //O caractere não é alfanumérico
 
 
 
 
             // NOT  
-            bool result = true;
-            if (!result)
+            bool resultado = true;
+            if (!resultado)
             {
-                Console.WriteLine("The condition is true (result is false).");
+                Console.WriteLine("A condição é verdadeira (resultado é falso).");
             }
             else
             {
-                Console.WriteLine("The condition is false (result is true).");
+                Console.WriteLine("A condição é falsa (resultado é verdadeiro).");
             }
 
-            // Short-circuit AND  
+            // AND curto-circuito
             int m1 = 9;
             int n1 = 7;
             int p1 = 5;
             if (m1 >= n1 && m1 >= p1)
             {
-                Console.WriteLine("Nothing is larger than m.");
+                Console.WriteLine("Nada é maior que m.");
             }
 
-            // AND and NOT  
+            // AND e NOT
             if (m1 >= n1 && !(p1 > m1))
             {
-                Console.WriteLine("Nothing is larger than m.");
+                Console.WriteLine("Nada é maior que m.");
             }
 
-            // Short-circuit OR  
+            // OR curto-circuito
             if (m1 > n1 || m1 > p1)
             {
-                Console.WriteLine("m isn't the smallest.");
+                Console.WriteLine("m não é o menor.");
             }
 
-            // NOT and OR  
+            // NOT e OR  
             m1 = 4;
             if (!(m1 >= n1 || m1 >= p1))
             {
-                Console.WriteLine("Now m is the smallest.");
+                Console.WriteLine("agora me é o menor.");
             }
-            // Output:  
-            // The condition is false (result is true).  
-            // Nothing is larger than m.  
-            // Nothing is larger than m.  
-            // m isn't the smallest.  
-            // Now m is the smallest.
-
-
-
         }
     }
 }
