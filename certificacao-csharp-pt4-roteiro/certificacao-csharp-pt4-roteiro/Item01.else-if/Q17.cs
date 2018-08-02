@@ -13,20 +13,20 @@ namespace Q17
 
     public class Loan
     {
-        private int _term;
-        private const int MaximumTerm = 10;
-        private const decimal Rate = 0.034m;
-        public int Term
+        private int prazo;
+        private const int PRAZO_MAXIMO_ANOS = 10;
+        private const decimal JUROS = 0.034m;
+        public int Prazo
         {
             get
             {
-                return _term;
+                return prazo;
             }
             set
             {
-                if (value <= MaximumTerm)
+                if (value <= PRAZO_MAXIMO_ANOS)
                 {
-                    _term = value;
+                    prazo = value;
                 }
                 else
                 {

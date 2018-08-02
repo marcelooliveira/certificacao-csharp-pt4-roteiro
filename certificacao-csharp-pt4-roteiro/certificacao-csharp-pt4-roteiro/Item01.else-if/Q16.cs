@@ -7,24 +7,24 @@
 
         }
 
-        private static decimal CalculateInterest(decimal loanAmount, int loanTerm)
+        private static decimal CalcularValorComJuros(decimal valorEmprestimo, int prazoEmprestimo)
         {
-            decimal interestAmount;
-            decimal loanRate;
-            if (loanTerm > 0 && loanTerm < 5 && loanAmount < 5000m)
+            decimal valorComJuros;
+            decimal jurosDoEmprestimo;
+            if (prazoEmprestimo > 0 && prazoEmprestimo < 5 && valorEmprestimo < 5000m)
             {
-                loanRate = 0.045m;
+                jurosDoEmprestimo = 0.045m;
             }
-            else if (loanTerm > 5 && loanAmount > 5000m)
+            else if (prazoEmprestimo > 5 && valorEmprestimo > 5000m)
             {
-                loanRate = 0.085m;
+                jurosDoEmprestimo = 0.085m;
             }
             else
             {
-                loanRate = 0.055m; //loanRate = 0.0825m;
+                jurosDoEmprestimo = 0.055m; //jurosDoEmprestimo = 0.0825m;
             }
-            interestAmount = loanAmount * loanRate * loanTerm;
-            return interestAmount;
+            valorComJuros = valorEmprestimo * jurosDoEmprestimo * prazoEmprestimo;
+            return valorComJuros;
         }
     }
 }

@@ -6,32 +6,32 @@
 //```
 using System;
 
-public class Lease                                                             //01 
-{                                                                              //02 
-                                                                               //03 
-    private int _term;                                                         //04 
-    private const int MaximumTerm = 5;                                         //05 
-    private const decimal Rate = 0.034m;                                       //06 
-    public int Term                                                            //07 
-    {                                                                          //08 
-        get                                                                    //09 
-        {                                                                      //10 
-         return _term;                                                         //11 
-        }                                                                      //12 
-        set                                                                    //13 
-        {                                                                      //14 
-            if (value <= MaximumTerm)                                          //15 
-            {                                                                  //16 
-                _term = value;                                                 //17 
-            }                                                                  //18 
-            else                                                               //19 
-            {                                                                  //20 
-                                                                               //21 
-            }                                                                  //22 
-        }                                                                      //23 
-    }                                                                          //24 
-}                                                                              //25 
-public delegate void MaximumTermReachedHandler(object source, EventArgs e);    //26 
+public class Arrendamento
+{
+
+    private int prazo;
+    private const int PRAZO_MAXIMO_ANOS = 5;
+    private const decimal JUROS = 0.034m;
+    public int Prazo
+    {
+        get
+        {
+            return prazo;
+        }
+        set
+        {
+            if (value <= PRAZO_MAXIMO_ANOS)
+            {
+                prazo = value;
+            }
+            else
+            {
+
+            }
+        }
+    }
+}
+public delegate void MaximumTermReachedHandler(object source, EventArgs e);
 //```
 
 //Leases are restricted to a maximum term of 5 years. The application must send a notification

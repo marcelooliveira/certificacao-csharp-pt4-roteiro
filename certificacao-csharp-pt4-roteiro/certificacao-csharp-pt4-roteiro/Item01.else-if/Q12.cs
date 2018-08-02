@@ -7,11 +7,11 @@
 
         }
 
-/*01*/  private bool IsNull(object obj)
-/*02*/  {
-/*03*/      
-/*04*/      return false;
-/*05*/  }
+        private bool IsNull(object obj)
+        {
+            //???
+            return false;
+        }
     }
 }
 
