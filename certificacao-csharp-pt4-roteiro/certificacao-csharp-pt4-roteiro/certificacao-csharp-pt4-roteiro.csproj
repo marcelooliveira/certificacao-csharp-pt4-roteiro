@@ -34,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Transactions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -59,32 +60,52 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Compile Include="Q01.cs" />
     <None Include="Q01.md" />
+    <Compile Include="Q02.cs" />
     <None Include="Q02.md" />
+    <Compile Include="Q03.cs" />
     <None Include="Q03.md" />
+    <Compile Include="Q04.cs" />
     <None Include="Q04.md" />
+    <Compile Include="Q05.cs" />
     <None Include="Q05.md" />
+    <Compile Include="Q06.cs" />
     <None Include="Q06.md" />
+    <Compile Include="Q07.cs" />
     <None Include="Q07.md" />
-    <None Include="Q08.md" />
+    <Compile Include="Q09.cs" />
     <None Include="Q09.md" />
+    <Compile Include="Q11.cs" />
     <None Include="Q11.md" />
+    <Compile Include="Q12.cs" />
     <None Include="Q12.md" />
+    <Compile Include="Q13.cs" />
     <None Include="Q13.md" />
+    <Compile Include="Q14.cs" />
     <None Include="Q14.md" />
+    <Compile Include="Q15.cs" />
     <None Include="Q15.md" />
+    <Compile Include="Q16.cs" />
     <None Include="Q16.md" />
+    <Compile Include="Q17.cs" />
     <None Include="Q17.md" />
+    <Compile Include="Q18.cs" />
     <None Include="Q18.md" />
-    <None Include="Q19.md" />
+    <Compile Include="Q20.cs" />
     <None Include="Q20.md" />
+    <Compile Include="Q21.cs" />
     <None Include="Q21.md" />
+    <Compile Include="Q22.cs" />
     <None Include="Q22.md" />
+    <Compile Include="Q23.cs" />
     <None Include="Q23.md" />
+    <Compile Include="Q24.cs" />
     <None Include="Q24.md" />
+    <Compile Include="Q25.cs" />
     <None Include="Q25.md" />
+    <Compile Include="Q26.cs" />
     <None Include="Q26.md" />
-    <None Include="Q27.md" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

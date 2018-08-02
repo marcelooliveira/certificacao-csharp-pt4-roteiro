@@ -1,0 +1,140 @@
+﻿using System.Data.SqlClient;
+using System.Transactions;
+
+namespace Q20
+{
+    class Programa
+    {
+        private readonly string connectionString;
+
+        public void Executar()
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            SqlCommand command = new SqlCommand("proc1", connection);
+            SqlTransaction transaction = connection.BeginTransaction();
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                transaction.Commit();
+            }
+            catch
+            {
+                transaction.Rollback();
+            }
+            finally
+            {
+                command.Dispose();
+                connection.Dispose();
+            }
+        }
+    }
+}
+
+//You need to ensure that after Proc1 executes, the database is left in a consistent state
+
+//DRAG DROP
+//You have an application that accesses a Microsoft SQL Server database.
+//The database contains a stored procedure named Proc1. Procl accesses several rows of
+//data across multiple tables.
+//You need to ensure that after Proc1 executes, the database is left in a consistent state.
+//While Proc1 executes, no other operation can modify data already read or changed by
+//Proc1. (Develop the solution by selecting and ordering the required code snippets.
+//You may not need all of the code snippets.)
+
+//```
+//SqlTransaction transaction = connection.BeginTransaction
+//(System.Data.IsolationLevel.RepeatableRead);
+//SqlTransaction transaction = connection.BeginTransaction
+//(System.Data.IsolationLevel.ReadUncommitted);
+
+
+
+//} finally {
+
+
+
+//command.Dispose();
+//connection.Dispose();
+//}
+
+
+
+//try {
+//connection.Open();
+//command.ExecuteNonQuery():
+
+
+//TransactionScope transaction = new TransactionScope();
+
+
+
+//SqlConnection connection = new SqlConnection(connectionString);
+//SqlCommand command = new SqlCommand("procl", connection);
+
+
+//} catch {
+
+
+//transaction.Rollback();
+
+
+//transaction.Commit();
+//```
+
+//Explanation:
+
+//Box 1:
+
+//SqlConnection connection = new SqlConnection(connectionString);
+//SqlCommand command = new SqlCommand("procl", connection);
+
+
+//Box 2:
+//TransactionScope transaction = new TransactionScope();
+
+
+//Box 3:
+//try {
+//connection.Open();
+//command.ExecuteNonQuery():
+
+
+//Box 4: transaction.Commit();
+
+
+//Box 5:
+
+//} catch {
+
+
+//Box 6: transaction.Rollback();
+
+//Box 7: } finally {
+
+//Box 8:
+//command.Dispose();
+//connection.Dispose();
+//}
+
+//Note:
+//* Box 1: Start with the sqlconnection
+//* Box 2: Open the SQL transaction (RepeatableRead)
+/// IsolationLevel
+//Specifies the isolation level of a transaction.
+/// RepeatableRead
+//Volatile data can be read but not modified during the transaction. New data can be added
+//during the transaction.
+/// ReadCommitted
+//Volatile data cannot be read during the transaction, but can be modified.
+/// ReadUncommitted
+//Volatile data can be read and modified during the transaction.
+//Box 3: Try the query
+//Box 4: commit the transaction
+//Box 5: Catch the exception (a failed transaction)
+//Box 6: Rollback the transaction
+//Box 7: Final cleanup
+//Box 8: Clean up (close command and connection).
+//Reference: SqlConnection.BeginTransaction Method
+//Incorrect:
+//The transaction is not set up by transactionscope here. Begintransaction is used.

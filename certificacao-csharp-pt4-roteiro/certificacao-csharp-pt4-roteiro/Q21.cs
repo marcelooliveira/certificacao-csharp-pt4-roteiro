@@ -1,0 +1,88 @@
+﻿using System;
+
+namespace Q21
+{
+    class Program
+    {
+        static void ProcessOrders(string orderRefNumber)
+        {
+            if (orderRefNumber == null)
+            {
+                throw new ArgumentNullException();
+            }
+            //...
+        }
+
+        static void Executar()
+        {
+            try
+            {
+                string orderRefNumber = null;
+                ProcessOrders(orderRefNumber);
+            }
+            catch (ArgumentException e) //catch (ArgumentNullException e)
+            {
+                Console.WriteLine("{0} An exception caught.", e);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("{0} An exception caught.", e);
+            }
+        }
+    }
+}
+
+//You need to ensure that the code can be compiled
+
+//You are developing an application.
+//The application contains the following code:
+
+//```
+//class Program
+//{
+//    static void ProcessOrders (string orderRefNumber)
+//    {
+//        if (orderRefNumber == null)
+//        {
+//            throw new ArgumentNullException();
+//        }
+//        ...
+//    }
+
+//    static void Main()
+//    {
+//        try
+//        {
+//            string orderRefNumber = null;
+//            ProcessOrders(orderRefNumber);
+//        }
+//        catch (ArgumentNullException e)
+//        {
+//            Console.WriteLine("{0} An exception caught.", e);
+//        }
+//        catch (Exception e)
+//        {
+//            Console.WriteLine("{0} An exception caught.", e);
+//        }
+//    }
+//}
+
+//```
+
+//When you compile the code, you receive the following syntax error message: “A previous
+//catch clause already catches all exceptions of this or a super type (‘System.Exception’).”
+//You need to ensure that the code can be compiled. What should you do?
+
+//A.
+//Catch the ArgumentException exception instead of the ArgumentNullException exception.
+
+//B.
+//Throw a new exception in the second catch block.
+
+//C.
+//Catch the ArgumentNullException exception first.
+
+//D.
+//Re-throw the exception caught by the second catch block.
+
+//# RESPOSTA: A

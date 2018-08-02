@@ -1,0 +1,79 @@
+﻿using System;
+
+namespace Q18
+{
+    class Programa
+    {
+        public void Executar()
+        {
+            int valor = GetValor("Active");
+        }
+
+        private int GetValor(string status)
+        {
+            Int32 returnStatus = Int32.MinValue;
+            switch (status)
+            {
+                case "Active":
+                    returnStatus = 1;
+                    break;
+                case "Inactive":
+                    returnStatus = 0;
+                    break;
+                default:
+                    returnStatus = -1;
+                    break;
+            }
+            return returnStatus;
+        }
+    }
+}
+
+//You need to ensure that the method meets the following requirements:
+
+//DRAG DROP
+//You have a method that will evaluate a parameter of type Int32 named Status.
+//You need to ensure that the method meets the following requirements:
+
+//If Status is set to Active, the method must return 1.
+//If Status is set to Inactive, the method must return 0.
+//If Status is any other value, the method must return -1.
+//What should you do? (To answer, drag the appropriate statement to the correct location in
+//the answer area. Each statement may be used once, more than once, or not at all. You may
+//need to drag the split bar between panes or scroll to view content.)
+
+//**OPÇÕES**
+//```
+//break;
+//case "Active":
+//case "Inactive":
+//default:
+//goto default;
+//return
+//```
+
+//```
+//Int32 returnStatus = Int32.MinValue;
+//switch (status) 
+//{
+//    [LACUNA 1]
+//        returnStatus = 1;
+//        [LACUNA 2]
+//    [LACUNA 3]
+//        returnStatus = 0;
+//        [LACUNA 4]
+//    [LACUNA 5]
+//        returnStatus = —1;
+//        [LACUNA 6]
+//}
+//return returnStatus;
+//```
+
+//```
+//[LACUNA 1] case "Active":
+//[LACUNA 2] break;
+//[LACUNA 3] case "Inactive":
+//[LACUNA 4] break;
+//[LACUNA 5] default:
+//[LACUNA 6] break;
+//```
