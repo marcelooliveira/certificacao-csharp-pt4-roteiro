@@ -1,14 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace certificacao_csharp_pt4_roteiro
 {
     class P05
     {
         static void Executar()
+        {
+            IfElse(); /*OK*/
+            IfSemElse(); /*OK*/
+            IfAninhado(); /*OK*/
+            IfTesteCaracteres();/*OK*/
+            IfTesteConsoleRead(); /*OK*/
+            IfNot(); /*OK*/
+            IfAndOr(); /*OK*/
+        }
+
+        private static void IfSemElse()
+        {
+            // instrução if sem um else  
+            bool condicao = true;
+            if (condicao)
+            {
+                //instrução then;
+            }
+            // Próxima instrução do programa. 
+        }
+
+        private static bool IfElse()
         {
             bool condicao = true;
 
@@ -21,38 +39,11 @@ namespace certificacao_csharp_pt4_roteiro
                 Console.WriteLine("A variável foi definida como falso.");
             }
 
+            return condicao;
+        }
 
-
-
-
-
-
-
-            // instrução if-else  
-            if (condicao)
-            {
-                //instrução then;
-            }
-            else
-            {
-                //instrução else;
-            }
-            // Próxima instrução do programa. 
-
-            // instrução if sem um else  
-            if (condicao)
-            {
-                //instrução then;
-            }
-            // Próxima instrução do programa. 
-
-
-
-
-
-
-
-
+        private static void IfAninhado()
+        {
             // Tenta com m = 12 e depois com m = 8
             int m = 12;
             int n = 18;
@@ -80,10 +71,10 @@ namespace certificacao_csharp_pt4_roteiro
             {
                 Console.WriteLine("Result2");
             }
+        }
 
-
-
-
+        private static void IfTesteCaracteres()
+        {
             Console.Write("Digite um caractere: ");
             char c = (char)Console.Read();
             if (Char.IsLetter(c))
@@ -101,61 +92,10 @@ namespace certificacao_csharp_pt4_roteiro
             {
                 Console.WriteLine("O caractere não é alfabético.");
             }
+        }
 
-            //Saída:
-
-            //Digite um caractere: 2
-            //O caractere não é alfabético.
-
-            //Digite um caractere: A
-            //O caractere é maiúsculo.
-
-            //Digite um caractere: h
-            //O caractere é minúsculo.
-
-
-
-
-
-
-
-            // Change the values of these variables to test the results.
-            bool Condicao1 = true;
-            bool Condicao2 = true;
-            bool Condicao3 = true;
-            bool Condicao4 = true;
-
-            if (Condicao1)
-            {
-                // Condicao1 é verdadeira.
-            }
-            else if (Condicao2)
-            {
-                // Condicao1 é falsa e Condicao2 é verdadeira.
-            }
-            else if (Condicao3)
-            {
-                if (Condicao4)
-                {
-                    // Condicao1 e Condicao2 são falsas. Condicao3 e Condicao4 são verdadeiras.
-                }
-                else
-                {
-                    // Condicao1, Condicao2, e Condition4 são falsas. Condicao3 é verdadeira.
-                }
-            }
-            else
-            {
-                // Condition1, Condition2, and Condition3 are false.
-            }
-
-
-
-
-
-
-
-
+        private static void IfTesteConsoleRead()
+        {
             Console.Write("Digite um caractere: ");
             char ch = (char)Console.Read();
 
@@ -175,27 +115,10 @@ namespace certificacao_csharp_pt4_roteiro
             {
                 Console.WriteLine("O caractere não é alfanumérico.");
             }
+        }
 
-
-
-
-            //Saída
-            //=====
-            //Digite um caractere: E
-            //O caractere é maiúsculo
-
-            //Digite um caractere: e
-            //O caractere é minúsculo
-
-            //Digite um caractere: 4
-            //O caractere é um número
-
-            //Digite um caractere: =
-            //O caractere não é alfanumérico
-
-
-
-
+        private static void IfNot()
+        {
             // NOT  
             bool resultado = true;
             if (!resultado)
@@ -206,7 +129,10 @@ namespace certificacao_csharp_pt4_roteiro
             {
                 Console.WriteLine("A condição é falsa (resultado é verdadeiro).");
             }
+        }
 
+        private static void IfAndOr()
+        {
             // AND curto-circuito
             int m1 = 9;
             int n1 = 7;
@@ -236,4 +162,38 @@ namespace certificacao_csharp_pt4_roteiro
             }
         }
     }
+
+    public class Emprestimo
+    {
+
+        private int prazo;
+        private const int PRAZO_MAXIMO_PAGAMENTO_ANOS = 5;
+        private const decimal JUROS = 0.034m;
+
+        //public event PrazoMaximoEstouradoHandler OnPrazoMaximoEstourado;
+
+        public int Prazo
+        {
+            get
+            {
+                return prazo;
+            }
+            set
+            {
+                if (value <= PRAZO_MAXIMO_PAGAMENTO_ANOS)
+                {
+                    prazo = value;
+                }
+                else
+                {
+                    //if (OnPrazoMaximoEstourado != null)
+                    //{
+                    //    OnPrazoMaximoEstourado(this, new EventArgs());
+                    //}
+                }
+            }
+        }
+    }
+
+    public delegate void PrazoMaximoEstouradoHandler(object source, EventArgs e);
 }

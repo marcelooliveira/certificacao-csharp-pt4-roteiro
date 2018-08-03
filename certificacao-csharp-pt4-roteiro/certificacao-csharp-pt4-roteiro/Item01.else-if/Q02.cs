@@ -6,32 +6,37 @@
 //```
 using System;
 
-public class Arrendamento
+namespace ByteBank.Q02
 {
-
-    private int prazo;
-    private const int PRAZO_MAXIMO_ANOS = 5;
-    private const decimal JUROS = 0.034m;
-    public int Prazo
+    public class Emprestimo
     {
-        get
-        {
-            return prazo;
-        }
-        set
-        {
-            if (value <= PRAZO_MAXIMO_ANOS)
-            {
-                prazo = value;
-            }
-            else
-            {
 
+        private int prazo;
+        private const int PRAZO_MAXIMO_PAGAMENTO_ANOS = 5;
+        private const decimal JUROS = 0.034m;
+        public int Prazo
+        {
+            get
+            {
+                return prazo;
+            }
+            set
+            {
+                if (value <= PRAZO_MAXIMO_PAGAMENTO_ANOS)
+                {
+                    prazo = value;
+                }
+                else
+                {
+
+                }
             }
         }
     }
+
+    public delegate void PrazoMaximoEstouradoHandler(object source, EventArgs e);
 }
-public delegate void MaximumTermReachedHandler(object source, EventArgs e);
+
 //```
 
 //Leases are restricted to a maximum term of 5 years. The application must send a notification
