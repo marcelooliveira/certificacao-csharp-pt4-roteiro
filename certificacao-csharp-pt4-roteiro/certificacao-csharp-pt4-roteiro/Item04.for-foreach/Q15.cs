@@ -7,7 +7,7 @@ namespace Q15
     {
         public void Executar()
         {
-            IList<Customer> clientes = new List<Customer>();
+            IList<Cliente> clientes = new List<Cliente>();
             IList<Conta> contas = new List<Conta>
             {
                 new Conta(1000m, 2, 0.025m),
@@ -15,11 +15,11 @@ namespace Q15
                 new Conta(5000m, 6, 0.045m)
             };
 
-            clientes.Add(new Customer("David", "Jones", contas));
+            clientes.Add(new Cliente("David", "Jones", contas));
 
             Collection<Conta> contasEspeciais = new Collection<Conta>();
 
-            foreach (Customer cliente in clientes)
+            foreach (Cliente cliente in clientes)
             {
                 foreach (Conta conta in cliente.Contas)
                 {
@@ -45,9 +45,9 @@ namespace Q15
         public int Periodo { get; set; }
     }
 
-    class Customer
+    class Cliente
     {
-        public Customer(string nome, string sobrenome, IList<Conta> contas)
+        public Cliente(string nome, string sobrenome, IList<Conta> contas)
         {
             Nome = nome;
             Sobrenome = sobrenome;

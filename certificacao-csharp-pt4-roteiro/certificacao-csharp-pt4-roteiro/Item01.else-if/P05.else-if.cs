@@ -170,7 +170,7 @@ namespace certificacao_csharp_pt4_roteiro
         private const int PRAZO_MAXIMO_PAGAMENTO_ANOS = 5;
         private const decimal JUROS = 0.034m;
 
-        //public event PrazoMaximoEstouradoHandler OnPrazoMaximoEstourado;
+        public event PrazoMaximoEstouradoHandler OnPrazoMaximoEstourado;
 
         public int Prazo
         {
