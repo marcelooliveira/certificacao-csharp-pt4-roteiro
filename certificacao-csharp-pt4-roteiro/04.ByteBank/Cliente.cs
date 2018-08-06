@@ -4,9 +4,27 @@ using System.Text;
 
 namespace _04.ByteBank
 {
+    enum StatusCliente
+    {
+        Ativo,
+        Inativo,
+        Novo
+    }
+
     class Cliente
     {
+        public Cliente(int id, string nome, string sobrenome, string email, decimal valorUltimoEmprestimo, StatusCliente status)
+        {
+            Id = id;
+            Nome = nome;
+            Sobrenome = sobrenome;
+            Email = email;
+            ValorUltimoEmprestimo = valorUltimoEmprestimo;
+            Status = status;
+        }
+
         public Cliente(int id, string nome, string sobrenome, string email, decimal valorUltimoEmprestimo)
+            : this(id, nome, sobrenome, email, valorUltimoEmprestimo, StatusCliente.Novo)
         {
             Id = id;
             Nome = nome;
@@ -23,7 +41,7 @@ namespace _04.ByteBank
         }
 
         public Cliente(int id, string nome, string sobrenome, string email, decimal valorUltimoEmprestimo, IList<Conta> contas)
-            : this(id, nome, sobrenome, email, valorUltimoEmprestimo)
+            : this(id, nome, sobrenome, email, valorUltimoEmprestimo, StatusCliente.Novo)
         {
             Contas = contas;
         }
@@ -34,5 +52,6 @@ namespace _04.ByteBank
         public string Email { get; }
         public decimal ValorUltimoEmprestimo { get; }
         public IList<Conta> Contas { get; } = new List<Conta>();
+        public StatusCliente Status { get; } = StatusCliente.Ativo;
     }
 }

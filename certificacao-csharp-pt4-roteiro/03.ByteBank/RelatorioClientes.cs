@@ -18,7 +18,7 @@ namespace _03.ByteBank
                 while ((linha = leitor.ReadLine()) != null)
                 {
                     var campos = linha.Split(',');
-                    Console.WriteLine($"{int.Parse(campos[0])}, {campos[1]}, {campos[2]}, {campos[3]}, {decimal.Parse(campos[4])}, {bool.Parse(campos[5])}");
+                    Console.WriteLine($"{int.Parse(campos[0])}, {campos[1]}, {campos[2]}, {campos[3]}, {decimal.Parse(campos[4])}, {campos[5]}");
                 }
             }
         }

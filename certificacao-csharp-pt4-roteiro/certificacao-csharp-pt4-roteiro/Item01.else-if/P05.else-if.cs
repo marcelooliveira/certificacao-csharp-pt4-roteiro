@@ -6,13 +6,41 @@ namespace certificacao_csharp_pt4_roteiro
     {
         static void Executar()
         {
-            IfElse(); /*OK*/
             IfSemElse(); /*OK*/
+            IfElse(); /*OK*/
             IfAninhado(); /*OK*/
             IfTesteCaracteres();/*OK*/
             IfTesteConsoleRead(); /*OK*/
             IfNot(); /*OK*/
             IfAndOr(); /*OK*/
+        }
+
+        private static void SacarDinheiro(decimal quantia)
+        {
+            if (TemSaldoSuficiente(quantia))
+            {
+                Sacar(quantia);
+                ImprimirComprovante();
+            }
+            else
+            {
+                Console.WriteLine("Saldo indisponível");
+            }
+        }
+
+        private static bool TemSaldoSuficiente(decimal quantia)
+        {
+            return true;
+        }
+
+        private static void ImprimirComprovante()
+        {
+            Console.WriteLine("ImprimirComprovante");
+        }
+
+        private static void Sacar(decimal quantia)
+        {
+            Console.WriteLine("Sacar");
         }
 
         private static void IfSemElse()
@@ -22,8 +50,14 @@ namespace certificacao_csharp_pt4_roteiro
             if (condicao)
             {
                 //instrução then;
+                FacaAlgo();
             }
             // Próxima instrução do programa. 
+        }
+
+        private static void FacaAlgo()
+        {
+            //throw new NotImplementedException();
         }
 
         private static bool IfElse()
@@ -32,11 +66,13 @@ namespace certificacao_csharp_pt4_roteiro
 
             if (condicao)
             {
-                Console.WriteLine("A variável foi definida como verdadeiro.");
+                Console.WriteLine(
+                    "A expressão foi avaliada como verdadeiro.");
             }
             else
             {
-                Console.WriteLine("A variável foi definida como falso.");
+                Console.WriteLine(
+                    "A expressão foi avaliada como falso.");
             }
 
             return condicao;
@@ -91,6 +127,50 @@ namespace certificacao_csharp_pt4_roteiro
             else
             {
                 Console.WriteLine("O caractere não é alfabético.");
+            }
+        }
+
+        //private static void IfThenElseIfElse()
+        //{
+        //    string texto = "else if";
+
+        //    if (texto == "if")
+        //    {
+        //        Console.WriteLine("bloco then");
+        //    }
+        //    else if (texto == "else if")
+        //    {
+        //        Console.WriteLine("else if");
+        //    }
+        //    else if (texto == "else if 2")
+        //    {
+        //        Console.WriteLine("else if 2");
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("else");
+        //    }
+        //}
+
+        private static void IfThenElseIfElse()
+        {
+            bool valor = true;
+
+            if (valor)
+            {
+                Console.WriteLine("bloco then");
+            }
+            else if (valor)
+            {
+                Console.WriteLine("else if");
+            }
+            else if (valor)
+            {
+                Console.WriteLine("else if 2");
+            }
+            else
+            {
+                Console.WriteLine("else");
             }
         }
 
