@@ -6,7 +6,7 @@ namespace _02.ByteBank
     {
         static void Main(string[] args)
         {
-            var total = Emprestimo.CalcularValorComJuros(20000, 4);
+            var total = Emprestimo.CalcularJuros(20000, 4);
             Console.WriteLine(total);
 
             Emprestimo emprestimo = new Emprestimo("ABC123");

@@ -9,20 +9,19 @@ namespace _02.ByteBank
         private int prazo;
         private const int PRAZO_MAXIMO_PAGAMENTO_ANOS = 5;
         private const decimal JUROS = 0.034m;
-        private readonly string CodigoContrato;
+        private string codigoContrato;
         private static readonly string arquivoLog = GetArquivo();
 
-        public Emprestimo(string codigoContrato)
+        public void RedefinirCodigoContrato(string codigoContrato)
         {
-            bool codigoContratoValido = ValidarCodigo(codigoContrato);
-
-            if (!codigoContratoValido)
+            if (!ValidarCodigo(codigoContrato))
             {
-                throw new ArgumentException("código de contrato inválido");
+                Console.WriteLine("código de contrato inválido");
+                return;
             }
-
-            CodigoContrato = codigoContrato;
+            this.codigoContrato = codigoContrato;
         }
+
 
         private bool ValidarCodigo(string codigoContrato)
         {
@@ -39,6 +38,10 @@ namespace _02.ByteBank
             return codigoContratoValido;
         }
 
+        public Emprestimo(string codigoContrato)
+        {
+            this.codigoContrato = codigoContrato;
+        }
         public event PrazoMaximoEstouradoHandler OnPrazoMaximoEstourado;
 
         public int Prazo
@@ -49,60 +52,50 @@ namespace _02.ByteBank
             }
             set
             {
-                if (value <= PRAZO_MAXIMO_PAGAMENTO_ANOS)
+                if (value > PRAZO_MAXIMO_PAGAMENTO_ANOS)
                 {
-                    prazo = value;
-                }
-                else
-                {
-                    //if (null)
-                    //{
-                    //    Console.WriteLine("OnPrazoMaximoEstourado não informado!");
-                    //}
-
-                    //if (OnPrazoMaximoEstourado == null)
-                    //{
-                    //    Console.WriteLine("OnPrazoMaximoEstourado não informado!");
-                    //    return;
-                    //}
-
-                    if (OnPrazoMaximoEstourado != null)
+                    if (OnPrazoMaximoEstourado == null)
                     {
-                        OnPrazoMaximoEstourado(this, new EventArgs());
+                        Console.WriteLine("OnPrazoMaximoEstourado não informado!");
+                        return;
                     }
+                    OnPrazoMaximoEstourado(this, new EventArgs());
+                    return;
                 }
+                prazo = value;
             }
         }
 
-        public static decimal CalcularValorComJuros(decimal valorEmprestimo, int prazoEmprestimo)
+        public static decimal CalcularJuros(decimal valor, int prazo)
         {
-            decimal valorComJuros;
-            decimal jurosDoEmprestimo;
-            if (prazoEmprestimo > 0 && prazoEmprestimo < 5 && valorEmprestimo < 5000m)
+            decimal valorJuros;
+            decimal taxaJuros;
+            if (prazo > 0 && prazo < 5 && valor < 7000m) //falso
             {
-                jurosDoEmprestimo = 0.045m;
+                taxaJuros = 0.035m;
             }
-            else if (prazoEmprestimo > 5 && valorEmprestimo > 5000m)
+            else if (prazo > 5 && valor > 7000m) //falso
             {
-                jurosDoEmprestimo = 0.085m;
+                taxaJuros = 0.075m;
             }
             else
             {
-                jurosDoEmprestimo = 0.055m; //jurosDoEmprestimo = 0.0825m;
+                //taxaJuros = 0.045m;
+                taxaJuros = 0.0875m;
             }
 
-            valorComJuros = valorEmprestimo * jurosDoEmprestimo * prazoEmprestimo;
+            valorJuros = valor * taxaJuros * prazo;
 #if DEBUG
-            ImprimirTesteNoConsole(valorComJuros);
+            ImprimirTesteNoConsole(valorJuros);
 #endif  
-            Log($"Valor com juros: {valorComJuros:c2}");
+            Log($"Valor com juros: {valorJuros:c2}");
 
             if (Debugger.IsAttached)
             {
                 Process.Start("notepad.exe", arquivoLog);
             }
 
-            return valorComJuros;
+            return valorJuros;
         }
 
         [Conditional("DEBUG")]
