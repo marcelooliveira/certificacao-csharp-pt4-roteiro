@@ -51,49 +51,39 @@ namespace _01.ByteBank
             }
             set
             {
-                if (value <= PRAZO_MAXIMO_PAGAMENTO_ANOS)
+                if (value > PRAZO_MAXIMO_PAGAMENTO_ANOS)
                 {
-                    prazo = value;
-                }
-                else
-                {
-                    //if (null)
-                    //{
-                    //    Console.WriteLine("OnPrazoMaximoEstourado não informado!");
-                    //}
-
-                    //if (OnPrazoMaximoEstourado == null)
-                    //{
-                    //    Console.WriteLine("OnPrazoMaximoEstourado não informado!");
-                    //    return;
-                    //}
-                    
-                    if (OnPrazoMaximoEstourado != null)
+                    if (OnPrazoMaximoEstourado == null)
                     {
-                        OnPrazoMaximoEstourado(this, new EventArgs());
+                        Console.WriteLine("OnPrazoMaximoEstourado não informado!");
+                        return;
                     }
+                    OnPrazoMaximoEstourado(this, new EventArgs());
+                    return;
                 }
+                prazo = value;
             }
         }
 
-        public static decimal CalcularValorComJuros(decimal valorEmprestimo, int prazoEmprestimo)
+        public static decimal CalcularJuros(decimal valor, int prazo)
         {
-            decimal valorComJuros;
-            decimal jurosDoEmprestimo;
-            if (prazoEmprestimo > 0 && prazoEmprestimo < 5 && valorEmprestimo < 5000m)
+            decimal valorJuros;
+            decimal taxaJuros;
+            if (prazo > 0 && prazo < 5 && valor < 7000m) //falso
             {
-                jurosDoEmprestimo = 0.045m;
+                taxaJuros = 0.035m;
             }
-            else if (prazoEmprestimo > 5 && valorEmprestimo > 5000m)
+            else if (prazo > 5 && valor > 7000m) //falso
             {
-                jurosDoEmprestimo = 0.085m;
+                taxaJuros = 0.075m;
             }
             else
             {
-                jurosDoEmprestimo = 0.055m; //jurosDoEmprestimo = 0.0825m;
+                //taxaJuros = 0.045m;
+                taxaJuros = 0.0875m;
             }
-            valorComJuros = valorEmprestimo * jurosDoEmprestimo * prazoEmprestimo;
-            return valorComJuros;
+            valorJuros = valor * taxaJuros * prazo;
+            return valorJuros;
         }
     }
 }
