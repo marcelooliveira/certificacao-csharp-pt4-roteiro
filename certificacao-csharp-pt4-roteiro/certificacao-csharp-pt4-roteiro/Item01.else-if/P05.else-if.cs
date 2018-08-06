@@ -13,6 +13,8 @@ namespace certificacao_csharp_pt4_roteiro
             IfTesteConsoleRead(); /*OK*/
             IfNot(); /*OK*/
             IfAndOr(); /*OK*/
+
+            OperadoresTesteTipoERelacional();
         }
 
         private static void SacarDinheiro(decimal quantia)
@@ -43,6 +45,7 @@ namespace certificacao_csharp_pt4_roteiro
             Console.WriteLine("Sacar");
         }
 
+
         private static void IfSemElse()
         {
             // instrução if sem um else  
@@ -53,6 +56,13 @@ namespace certificacao_csharp_pt4_roteiro
                 FacaAlgo();
             }
             // Próxima instrução do programa. 
+
+            //var a = 2;
+            //var b = 5;
+            //if (a + b) //Não foi possível converter 'int' para 'bool'
+            //{
+            //    FacaAlgo();
+            //}
         }
 
         private static void FacaAlgo()
@@ -203,33 +213,43 @@ namespace certificacao_csharp_pt4_roteiro
             bool resultado = true;
             if (!resultado)
             {
-                Console.WriteLine("A condição é verdadeira (resultado é falso).");
+                Console.WriteLine(
+                    "A condição é verdadeira (resultado é falso).");
             }
             else
             {
-                Console.WriteLine("A condição é falsa (resultado é verdadeiro).");
+                Console.WriteLine(
+                    "A condição é falsa (resultado é verdadeiro).");
             }
         }
 
         private static void IfAndOr()
         {
+            int m0 = 9;
+            int n0 = 7;
+            if (m0 >= n0)
+            {
+                Console.WriteLine("m0 é maior ou igual a n0.");
+            }
+
             // AND curto-circuito
+
             int m1 = 9;
             int n1 = 7;
             int p1 = 5;
-            if (m1 >= n1 && m1 >= p1)
+            if ( m1 >= n1 && m1 >= p1 )
             {
-                Console.WriteLine("Nada é maior que m.");
+                Console.WriteLine("Nada é maior que m1.");
             }
 
             // AND e NOT
             if (m1 >= n1 && !(p1 > m1))
             {
-                Console.WriteLine("Nada é maior que m.");
+                Console.WriteLine("Nada é maior que m1.");
             }
 
             // OR curto-circuito
-            if (m1 > n1 || m1 > p1)
+            if ( m1 > n1 || m1 > p1 )
             {
                 Console.WriteLine("m não é o menor.");
             }
@@ -240,6 +260,27 @@ namespace certificacao_csharp_pt4_roteiro
             {
                 Console.WriteLine("agora me é o menor.");
             }
+        }
+
+        private static void OperadoresTesteTipoERelacional()
+        {
+            dynamic x = 10;
+            dynamic y = 23;
+
+            if (x == y)
+                Console.WriteLine("x igual a y");
+            if (x != y)
+                Console.WriteLine("x diferente de y");
+            if (x < y)
+                Console.WriteLine("menor que(verdadeiro se x for menor que y)");
+            if (x > y)
+                Console.WriteLine("maior que(verdadeiro se x for maior que y)");
+            if (x <= y)
+                Console.WriteLine("menor ou igual a");
+            if (x >= y)
+                Console.WriteLine("maior que ou igual a");
+            if (x is decimal)
+                Console.WriteLine("compatibilidade de tipo");
         }
     }
 

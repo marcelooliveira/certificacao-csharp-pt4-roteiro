@@ -7,18 +7,17 @@ namespace _01.ByteBank
         private int prazo;
         private const int PRAZO_MAXIMO_PAGAMENTO_ANOS = 5;
         private const decimal JUROS = 0.034m;
-        private readonly string CodigoContrato;
 
-        public Emprestimo(string codigoContrato)
+        private string codigoContrato;
+
+        public void RedefinirCodigoContrato(string codigoContrato)
         {
-            bool codigoContratoValido = ValidarCodigo(codigoContrato);
-
-            if (!codigoContratoValido)
+            if (!ValidarCodigo(codigoContrato))
             {
                 Console.WriteLine("código de contrato inválido");
+                return;
             }
-
-            CodigoContrato = codigoContrato;
+            this.codigoContrato = codigoContrato;
         }
 
         private bool ValidarCodigo(string codigoContrato)
@@ -35,6 +34,12 @@ namespace _01.ByteBank
 
             return codigoContratoValido;
         }
+
+        public Emprestimo(string codigoContrato)
+        {
+            this.codigoContrato = codigoContrato;
+        }
+
 
         public event PrazoMaximoEstouradoHandler OnPrazoMaximoEstourado;
 
