@@ -15,7 +15,7 @@ namespace Q15
                 new Conta(5000m, 6, 0.045m)
             };
 
-            clientes.Add(new Cliente("David", "Jones", contas));
+            clientes.Add(new Cliente("José", "Silva", contas));
 
             Collection<Conta> contasEspeciais = new Collection<Conta>();
 
