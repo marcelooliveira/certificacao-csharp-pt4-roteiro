@@ -113,15 +113,17 @@ namespace _02.ByteBank
 
         private static string GetArquivoLog()
         {
-            string caminhoImg = "";
+            string caminhoLog;
 #if (DEBUG)
-            caminhoImg = "Debug/Logs/"; //CAMINHO NA MÁQUINA DO DESENVOLVEDOR
+            //CAMINHO NA MÁQUINA DO DESENVOLVEDOR
+            caminhoLog = "Debug/Logs/"; 
 #else
-            caminhoImg = @"\\192.1.1.55\Logs\"; //CAMINHO NO SERVIDOR DE PRODUÇÃO
+            //CAMINHO NO SERVIDOR DE PRODUÇÃO
+            caminhoImg = @"\\192.1.1.55\Logs\"; 
 #endif
-            Directory.CreateDirectory(caminhoImg);
+            Directory.CreateDirectory(caminhoLog);
 
-            return Path.Combine(caminhoImg, "log.txt");
+            return Path.Combine(caminhoLog, "log.txt");
         }
 
         public void Finalizar()
