@@ -61,5 +61,4 @@ namespace _03.ByteBank
             return fatorial;
         }
     }
-
 }
