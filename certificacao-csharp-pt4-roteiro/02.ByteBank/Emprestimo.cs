@@ -117,7 +117,7 @@ namespace _02.ByteBank
 #if (DEBUG)
             caminhoImg = "Debug/Images/"; //CAMINHO NA MÁQUINA DO DESENVOLVEDOR
 #else
-            caminhoImg = "@"\\192.1.1.55\Images\"; //CAMINHO NO SERVIDOR DE PRODUÇÃO
+            caminhoImg = @"\\192.1.1.55\Images\"; //CAMINHO NO SERVIDOR DE PRODUÇÃO
 #endif
             Directory.CreateDirectory(caminhoImg);
 
