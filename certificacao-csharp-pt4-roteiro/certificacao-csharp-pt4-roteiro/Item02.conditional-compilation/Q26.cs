@@ -6,6 +6,25 @@ namespace Q26
     {
         public void Executar()
         {
+
+#if ADVANCED
+            ExecuteRelatorioAvancado();
+#else
+            ExecuteRelatorioSimples();
+#endif
+
+#if TRIAL
+                AvaliarEmprestimo();
+#elif BASIC
+                AvaliarEmprestimo();
+                ProcessarEmprestimo();
+                FinanciarEmprestimo();
+#elif ADVANCED
+            AvaliarEmprestimo();
+            ProcessarEmprestimo();
+#endif
+
+
 #if TRIAL
                 AvaliarEmprestimo();
 #elif BASIC
@@ -16,6 +35,11 @@ namespace Q26
             AvaliarEmprestimo();
             ProcessarEmprestimo();
 #endif
+        }
+
+        private void ExecuteRelatorioSimples()
+        {
+            throw new NotImplementedException();
         }
 
         private void FinanciarEmprestimo()
