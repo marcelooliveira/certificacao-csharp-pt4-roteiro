@@ -97,7 +97,7 @@ namespace _02.ByteBank
             return valorJuros;
         }
 
-        [Conditional("DEBUG")]
+        [Conditional("TESTE")]
         private static void ImprimirTesteNoConsole(decimal valorComJuros)
         {
             Console.WriteLine($"Valor com juros: {valorComJuros:c2}");
