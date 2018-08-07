@@ -15,4 +15,16 @@ namespace _02.ByteBank
     }
 
     public delegate void PrazoMaximoEstouradoHandler(object source, EventArgs e);
+
+    public class MinhaClasse
+    {
+        public void MeuMetodo()
+        {
+            #if (DEBUG)
+                Console.WriteLine("Versão DEBUG");
+            #else
+                Console.WriteLine("Versão RELEASE");
+            #endif
+        }
+    }
 }

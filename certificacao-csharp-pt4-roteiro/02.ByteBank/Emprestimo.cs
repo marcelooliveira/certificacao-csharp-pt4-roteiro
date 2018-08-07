@@ -10,7 +10,7 @@ namespace _02.ByteBank
         private const int PRAZO_MAXIMO_PAGAMENTO_ANOS = 5;
         private const decimal JUROS = 0.034m;
         private string codigoContrato;
-        private static readonly string arquivoLog = GetArquivo();
+        private static readonly string arquivoLog = GetArquivoLog();
 
         public void RedefinirCodigoContrato(string codigoContrato)
         {
@@ -80,7 +80,6 @@ namespace _02.ByteBank
             }
             else
             {
-                //taxaJuros = 0.045m;
                 taxaJuros = 0.0875m;
             }
 
@@ -112,13 +111,13 @@ namespace _02.ByteBank
             }
         }
 
-        private static string GetArquivo()
+        private static string GetArquivoLog()
         {
             string caminhoImg = "";
 #if (DEBUG)
-            caminhoImg = "Debug/Images/";
+            caminhoImg = "Debug/Images/"; //CAMINHO NA MÁQUINA DO DESENVOLVEDOR
 #else
-            caminhoImg = "Release/Images/":
+            caminhoImg = "@"\\192.1.1.55\Images\"; //CAMINHO NO SERVIDOR DE PRODUÇÃO
 #endif
             Directory.CreateDirectory(caminhoImg);
 
