@@ -33,6 +33,8 @@ namespace _04.ByteBank
                     }
                 }
             }
+
+            Emprestimo emprestimo = new Emprestimo("x123");
         }
 
         private static int GetFatorial(int numero)

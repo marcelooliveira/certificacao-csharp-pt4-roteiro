@@ -26,17 +26,16 @@ namespace _04.ByteBank
 
         private bool ValidarCodigo(string codigoContrato)
         {
-            bool codigoContratoValido = true;
-            foreach (var caractere in codigoContrato)
+            for (int i = 0; i < codigoContrato.Length; i++)
             {
-                if (!(Char.IsDigit(caractere) || Char.IsUpper(caractere)))
+                char caractere = codigoContrato[i];
+                if (!(char.IsDigit(caractere) || char.IsUpper(caractere)))
                 {
-                    codigoContratoValido = false;
-                    break;
+                    return false;
                 }
             }
 
-            return codigoContratoValido;
+            return true;
         }
 
         public event PrazoMaximoEstouradoHandler OnPrazoMaximoEstourado;
