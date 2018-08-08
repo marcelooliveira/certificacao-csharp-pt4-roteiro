@@ -8,6 +8,9 @@ namespace _04.ByteBank
     {
         static void Main(string[] args)
         {
+            int fatorial = GetFatorial(5);
+            System.Console.WriteLine($"fatorial: {fatorial}");
+            
             IList<Cliente> clientes = new List<Cliente>();
             IList<Conta> contas = new List<Conta>
             {
@@ -30,6 +33,18 @@ namespace _04.ByteBank
                     }
                 }
             }
+        }
+
+        private static int GetFatorial(int numero)
+        {
+            int fatorial = 1;
+            for (int contador = 1; contador <= numero; contador++)
+            {
+                fatorial = fatorial * contador;
+            }
+            System.Console.WriteLine($"fatorial: {fatorial}");
+
+            return fatorial;
         }
     }
 }
