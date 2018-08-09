@@ -76,12 +76,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cliente.cs" />
-    <Compile Include="ContaCorrente.cs" />
-    <Compile Include="LeitorDeArquivo.cs" />
-    <Compile Include="OperacaoFinanceiraException.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SaldoInsuficienteException.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -92,6 +88,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="DB\ByteBank.sql" />
+    <Content Include="DB\p_TARIFA_TRANSFERENCIA_i.sql" />
     <Content Include="DB\p_TRANSFERENCIA_BANCARIA_i.sql" />
   </ItemGroup>
   <ItemGroup>

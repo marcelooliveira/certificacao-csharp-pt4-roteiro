@@ -2,6 +2,7 @@
 using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
+using System.IO;
 
 namespace _06.ByteBank
 {
@@ -9,183 +10,209 @@ namespace _06.ByteBank
     {
         static void Main(string[] args)
         {
-            TransferenciaBancaria transferencia = new TransferenciaBancaria();
-            transferencia.Efetuar(4, 1, 3.5m);
-            transferencia.Efetuar(-4, 1, 3.5m);
-
-
-            //try
-            //{
-            //    command.ExecuteNonQuery();
-            //    transaction.Commit();
-            //    Console.WriteLine("Transferência realizada com sucesso!");
-            //}
-            //catch (SqlException ex)
-            //{
-            //    Console.WriteLine(ex);
-            //    transaction.Rollback();
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine("Erro genérico");
-            //    Console.WriteLine(ex);
-            //    transaction.Rollback();
-            //}
-            //finally
-            //{
-            //    command.Dispose();
-            //    connection.Dispose();
-            //}
-
-
-
-
-
-
-            //try
-            //{
-            //    CarregarContas();
-            //}
-            //catch (Exception)
-            //{
-            //    Console.WriteLine("CATCH NO METODO MAIN");
-            //}
-
-            //Console.WriteLine("Execução finalizada. Tecle enter para sair");
-            Console.ReadKey();
-        }
-
-
-
-        private static void CarregarContas()
-        {
-            using (LeitorDeArquivo leitor = new LeitorDeArquivo("teste.txt"))
-            {
-                leitor.LerProximaLinha();
-            }
-
-
-
-            // ---------------------------------------------
-
-            //LeitorDeArquivo leitor = null;
-            //try
-            //{
-            //    leitor = new LeitorDeArquivo("contasl.txt");
-
-            //    leitor.LerProximaLinha();
-            //    leitor.LerProximaLinha();
-            //    leitor.LerProximaLinha();
-            //}
-            //finally
-            //{
-            //    Console.WriteLine("Executando o finally");
-            //    if(leitor != null)
-            //    {
-            //        leitor.Fechar();
-            //    }
-            //}
-        }
-
-        private static void TestaInnerException()
-        {
-            try
-            {
-                ContaCorrente conta1 = new ContaCorrente(4564, 789684);
-                ContaCorrente conta2 = new ContaCorrente(7891, 456794);
-
-                // conta1.Transferir(10000, conta2);
-                conta1.Sacar(10000);
-            }
-            catch (OperacaoFinanceiraException e)
-            {
-                Console.WriteLine(e.Message);
-                Console.WriteLine(e.StackTrace);
-
-                // Console.WriteLine("Informações da INNER EXCEPTION (exceção interna):");
-
-            }
-        }
-
-        // Teste com a cadeia de chamada:
-        // Metodo -> TestaDivisao -> Dividir
-        private static void Metodo()
-        {
-            TestaDivisao(0);
-        }
-
-        private static void TestaDivisao(int divisor)
-        {
-            int resultado = Dividir(10, divisor);
-            Console.WriteLine("Resultado da divisão de 10 por " + divisor + " é " + resultado);
-        }
-
-        private static int Dividir(int numero, int divisor)
-        {
-            try
-            {
-                return numero / divisor;
-            }
-            catch (DivideByZeroException)
-            {
-                Console.WriteLine("Exceção com numero=" + numero + " e divisor=" + divisor);
-                throw;
-                Console.WriteLine("Código depois do throw");
-            }
-        }
-
-        // numero = 1
-        // divisor = 2;
-    }
-
-    class TransferenciaBancaria
-    {
-        private const string CONNECTION_STRING =
-            @"Data Source=(localdb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DB\ByteBank.mdf;Integrated Security=True";
-        private SqlConnection connection;
-        private SqlTransaction transaction;
-
-        public void Efetuar(int contaCreditoId, int contaDebitoId, decimal valorTransferencia)
-        {
-            connection = new SqlConnection(CONNECTION_STRING);
-            connection.Open();
-            transaction = connection.BeginTransaction();
-
-            SqlCommand command = GetTransferenciaCommand
-                (contaCreditoId, contaDebitoId, valorTransferencia);
+            ITransferenciaBancaria transferencia = new TransferenciaBancaria();
 
             try
             {
-                command.ExecuteNonQuery();
-                transaction.Commit();
-                Console.WriteLine("Transferência realizada com sucesso!");
-            }
-            catch (SqlException ex)
-            {
-                Console.WriteLine(ex);
-                throw;
+                ContaCorrente conta1 = new ContaCorrente(1, 100);
+                ContaCorrente conta2 = new ContaCorrente(4, 50);
+                Console.WriteLine(conta1);
+                Console.WriteLine(conta2);
+
+                //ContaCorrente conta3 = new ContaCorrente(-23, 50);
+                transferencia.Efetuar(conta1, conta2, 3.5m);
+                transferencia.Efetuar(conta1, conta2, 3500000000000m);
+                //transferencia.Efetuar(conta3, conta1, 2.5m);
+                transferencia.Efetuar(conta2, conta1, 3.5m);
+                Console.WriteLine(conta1);
+                Console.WriteLine(conta2);
+
+                Console.WriteLine("Transferências realizadas com sucesso!");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
+            }
+
+            Console.ReadKey();
+        }
+    }
+
+    class ContaCorrente
+    {
+        public int Id { get; }
+        public decimal Saldo { get; private set; }
+
+        public ContaCorrente(int id, decimal saldo)
+        {
+            if (id <= 0)
+            {
+                throw new ArgumentException(nameof(id));
+            }
+
+            Id = id;
+            Saldo = saldo;
+        }
+
+        public void Debitar(decimal valor)
+        {
+            if (Saldo < valor)
+            {
+                //throw new ArgumentException("saldo insuficiente");
+                throw new SaldoInsuficienteException();
+            }
+
+            Saldo -= valor;
+        }
+
+        public void Creditar(decimal valor)
+        {
+            Saldo += valor;
+        }
+
+        public override string ToString()
+        {
+            return $"Conta: {Id}, Saldo: {Saldo:C}";
+        }
+    }
+
+    interface ITransferenciaBancaria
+    {
+        void Efetuar(ContaCorrente contaDebito, ContaCorrente contaCredito 
+            , decimal valor);
+    }
+
+    class TransferenciaBancaria : ITransferenciaBancaria
+    {
+        public void Efetuar(ContaCorrente contaDebito, ContaCorrente contaCredito
+            , decimal valor)
+        {
+            Logger.LogInfo("Entrando do método Efetuar.");
+            try
+            {
+                if (contaCredito == null)
+                    throw new ArgumentNullException(nameof(contaCredito));
+                if (contaDebito == null)
+                    throw new ArgumentNullException(nameof(contaDebito));
+                if (valor <= 0)
+                    throw new ArgumentOutOfRangeException(nameof(valor));
+
+                contaDebito.Debitar(valor);
+                contaCredito.Creditar(valor);
+                Logger.LogInfo("Transferência realizada com sucesso.");
+            }
+            catch (Exception exc)
+            {
+                Logger.LogErro(exc.ToString());
                 throw;
             }
             finally
             {
-                command.Dispose();
+                Logger.LogInfo("Saindo do método Efetuar.");
+            }
+        }
+    }
+    
+    class TransferenciaBancaria_BD : ITransferenciaBancaria
+    {
+        private const string CONNECTION_STRING =
+            @"Data Source=(localdb)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\DB\ByteBank.mdf;Integrated Security=True";
+        private const decimal TAXA_TRANSFERENCIA = 1.0m;
+        private SqlConnection connection;
+        private SqlTransaction transaction;
+
+        public void Efetuar(ContaCorrente contaCredito, ContaCorrente contaDebito
+            , decimal valor)
+        {
+            Logger.LogInfo("Entrando do método Efetuar.");
+
+            connection = new SqlConnection(CONNECTION_STRING);
+            connection.Open();
+            transaction = connection.BeginTransaction();
+
+            SqlCommand comandoTransferencia = GetTransferenciaCommand
+                (contaCredito.Id, contaDebito.Id, valor);
+            SqlCommand comandoTaxa = GetTaxaTransferenciaCommand
+                (contaCredito.Id, TAXA_TRANSFERENCIA);
+
+            try
+            {
+                comandoTaxa.ExecuteNonQuery();
+                comandoTransferencia.ExecuteNonQuery();
+                transaction.Commit();
+                Logger.LogInfo("Transferência realizada com sucesso.");
+            }
+            catch (SqlException ex)
+            {
+                transaction.Rollback();
+                Logger.LogErro(ex.ToString());
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Logger.LogErro(ex.ToString());
+                throw;
+            }
+            finally
+            {
+                comandoTransferencia.Dispose();
                 transaction.Dispose();
                 connection.Dispose();
+                Logger.LogInfo("Saindo do método Efetuar.");
             }
         }
 
-        private SqlCommand GetTransferenciaCommand(int contaCreditoId, int contaDebitoId, decimal valorTransferencia)
+        private SqlCommand GetTransferenciaCommand(int contaDebitoId, int contaCreditoId, decimal valorTransferencia)
         {
             SqlCommand command = new SqlCommand("p_TRANSFERENCIA_BANCARIA_i", connection, transaction);
-            command.Parameters.AddWithValue("@CONTA_ID_DEBITO", contaCreditoId);
-            command.Parameters.AddWithValue("@CONTA_ID_CREDITO", contaDebitoId);
+            command.Parameters.AddWithValue("@CONTA_ID_DEBITO", contaDebitoId);
+            command.Parameters.AddWithValue("@CONTA_ID_CREDITO", contaCreditoId);
             command.Parameters.AddWithValue("@VALOR", valorTransferencia);
             command.CommandType = System.Data.CommandType.StoredProcedure;
             return command;
+        }
+
+        private SqlCommand GetTaxaTransferenciaCommand(int contaId, decimal valorTransferencia)
+        {
+            SqlCommand command = new SqlCommand("p_TARIFA_TRANSFERENCIA_i", connection, transaction);
+            command.Parameters.AddWithValue("@CONTA_ID", contaId);
+            command.Parameters.AddWithValue("@VALOR", valorTransferencia);
+            command.CommandType = System.Data.CommandType.StoredProcedure;
+            return command;
+        }
+    }
+
+    [Serializable]
+    public class SaldoInsuficienteException : Exception
+    {
+        public SaldoInsuficienteException() {}
+        public SaldoInsuficienteException(string message) : base(message) { }
+        public SaldoInsuficienteException(string message, Exception inner) : base(message, inner) { }
+        protected SaldoInsuficienteException(
+          System.Runtime.Serialization.SerializationInfo info,
+          System.Runtime.Serialization.StreamingContext context) : base(info, context) { }
+
+        public override string Message => "Saldo Insuficiente.";
+    }
+
+    class Logger
+    {
+        public static void LogInfo(string mensagem)
+        {
+            Log(mensagem, "INFO");
+        }
+
+        public static void LogErro(string mensagem)
+        {
+            Log(mensagem, "ERRO");
+        }
+
+        private static void Log(string mensagem, string tipo)
+        {
+            using (var sw = new StreamWriter("logs.txt", append: true))
+            {
+                sw.WriteLine(DateTime.Now.ToLocalTime() + ": " + tipo + " - " + mensagem);
+            }
         }
     }
 }
