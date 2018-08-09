@@ -9,11 +9,9 @@ namespace _06.ByteBank
     {
         static void Main(string[] args)
         {
-            TransferenciaBancaria transferencia;
-            transferencia = new TransferenciaBancaria(4, 1, 3.5m);
-            transferencia.Efetuar();
-            transferencia = new TransferenciaBancaria(-4, 1, 3.5m);
-            transferencia.Efetuar();
+            TransferenciaBancaria transferencia = new TransferenciaBancaria();
+            transferencia.Efetuar(4, 1, 3.5m);
+            transferencia.Efetuar(-4, 1, 3.5m);
 
 
             //try
@@ -147,33 +145,40 @@ namespace _06.ByteBank
         private SqlConnection connection;
         private SqlTransaction transaction;
 
-        private int contaCreditoId;
-        private int contaDebitoId;
-        private decimal valorTransferencia;
-
-        public TransferenciaBancaria(int contaCreditoId, int contaDebitoId, decimal valorTransferencia)
-        {
-            this.contaCreditoId = contaCreditoId;
-            this.contaDebitoId = contaDebitoId;
-            this.valorTransferencia = valorTransferencia;
-        }
-
-        public void Efetuar()
+        public void Efetuar(int contaCreditoId, int contaDebitoId, decimal valorTransferencia)
         {
             connection = new SqlConnection(CONNECTION_STRING);
             connection.Open();
             transaction = connection.BeginTransaction();
 
-            SqlCommand command = GetTransferenciaCommand();
-            command.ExecuteNonQuery();
-            transaction.Commit();
-            Console.WriteLine("Transferência realizada com sucesso!");
-            command.Dispose();
-            transaction.Dispose();
-            connection.Dispose();
+            SqlCommand command = GetTransferenciaCommand
+                (contaCreditoId, contaDebitoId, valorTransferencia);
+
+            try
+            {
+                command.ExecuteNonQuery();
+                transaction.Commit();
+                Console.WriteLine("Transferência realizada com sucesso!");
+            }
+            catch (SqlException ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                throw;
+            }
+            finally
+            {
+                command.Dispose();
+                transaction.Dispose();
+                connection.Dispose();
+            }
         }
 
-        private SqlCommand GetTransferenciaCommand()
+        private SqlCommand GetTransferenciaCommand(int contaCreditoId, int contaDebitoId, decimal valorTransferencia)
         {
             SqlCommand command = new SqlCommand("p_TRANSFERENCIA_BANCARIA_i", connection, transaction);
             command.Parameters.AddWithValue("@CONTA_ID_DEBITO", contaCreditoId);
