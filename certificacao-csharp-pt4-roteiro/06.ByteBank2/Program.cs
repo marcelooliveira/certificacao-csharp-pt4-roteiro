@@ -78,7 +78,7 @@ namespace _06.ByteBank
 
     interface ITransferenciaBancaria
     {
-        void Efetuar(ContaCorrente contaDebito, ContaCorrente contaCredito 
+        void Efetuar(ContaCorrente contaDebito, ContaCorrente contaCredito
             , decimal valor);
     }
 
@@ -106,13 +106,10 @@ namespace _06.ByteBank
                 Logger.LogErro(exc.ToString());
                 throw;
             }
-            finally
-            {
-                Logger.LogInfo("Saindo do método Efetuar.");
-            }
+            Logger.LogInfo("Saindo do método Efetuar.");
         }
     }
-    
+
     class TransferenciaBancaria_BD : ITransferenciaBancaria
     {
         private const string CONNECTION_STRING =
@@ -158,8 +155,8 @@ namespace _06.ByteBank
                 comandoTransferencia.Dispose();
                 transaction.Dispose();
                 connection.Dispose();
-                Logger.LogInfo("Saindo do método Efetuar.");
             }
+            Logger.LogInfo("Saindo do método Efetuar.");
         }
 
         private SqlCommand GetTransferenciaCommand(int contaDebitoId, int contaCreditoId, decimal valorTransferencia)
@@ -185,7 +182,7 @@ namespace _06.ByteBank
     [Serializable]
     public class SaldoInsuficienteException : Exception
     {
-        public SaldoInsuficienteException() {}
+        public SaldoInsuficienteException() { }
         public SaldoInsuficienteException(string message) : base(message) { }
         public SaldoInsuficienteException(string message, Exception inner) : base(message, inner) { }
         protected SaldoInsuficienteException(

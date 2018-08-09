@@ -18,7 +18,10 @@ namespace _06.ByteBank
             Console.WriteLine(conta2);
 
             transferencia.Efetuar(conta1, conta2, 3.5m);
-            transferencia.Efetuar(conta1, conta2, 3500000m);
+            //transferencia.Efetuar(conta1, conta2, 3500000m);
+            Console.WriteLine(conta1);
+            Console.WriteLine(conta2);
+
             transferencia.Efetuar(conta2, conta1, 3.5m);
             Console.WriteLine(conta1);
             Console.WriteLine(conta2);
