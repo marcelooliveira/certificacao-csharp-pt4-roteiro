@@ -10,21 +10,33 @@ namespace _06.ByteBank
     {
         static void Main(string[] args)
         {
-            ITransferenciaBancaria transferencia = new TransferenciaBancaria();
+            ITransferenciaBancaria transferencia = new TransferenciaBancaria_BD();
 
             ContaCorrente conta1 = new ContaCorrente(1, 100);
             ContaCorrente conta2 = new ContaCorrente(4, 50);
-            Console.WriteLine(conta1);
-            Console.WriteLine(conta2);
+            //Console.WriteLine(conta1);
+            //Console.WriteLine(conta2);
 
-            transferencia.Efetuar(conta1, conta2, 3.5m);
-            //transferencia.Efetuar(conta1, conta2, 3500000m);
-            Console.WriteLine(conta1);
-            Console.WriteLine(conta2);
-
-            transferencia.Efetuar(conta2, conta1, 3.5m);
-            Console.WriteLine(conta1);
-            Console.WriteLine(conta2);
+            //transferencia.Efetuar(conta1, conta2, 3.5m);
+            //Console.WriteLine(conta1);
+            //Console.WriteLine(conta2);
+            
+            try
+            {
+                transferencia.Efetuar(conta1, conta2, 3.5m);
+            }
+            catch (ArgumentException exc)
+            {
+                Logger.LogErro("Ocorreu um erro de argumento: " + 
+                    exc);
+            }
+            catch (Exception exc)
+            {
+                Logger.LogErro("Ocorreu um erro genérico : " + 
+                    exc);
+            }
+            //Console.WriteLine(conta1);
+            //Console.WriteLine(conta2);
 
             Console.ReadKey();
         }
@@ -68,6 +80,12 @@ namespace _06.ByteBank
         public void Efetuar(ContaCorrente contaDebito, ContaCorrente contaCredito
             , decimal valor)
         {
+            if (contaDebito.Saldo < valor)
+            {
+                throw new SaldoInsuficienteException();
+            }
+            Console.WriteLine($"Debitando {valor:C} da conta {contaDebito.Id}");
+            Console.WriteLine($"Creditando {valor:C} na conta {contaCredito.Id}");
             contaDebito.Debitar(valor);
             contaCredito.Creditar(valor);
         }
@@ -86,22 +104,32 @@ namespace _06.ByteBank
         {
             Logger.LogInfo("Entrando do método Efetuar.");
 
+            //Inicializa e abre a conexão com o banco de dados SQL Server
             connection = new SqlConnection(CONNECTION_STRING);
             connection.Open();
+
+            //Inicia uma transação
             transaction = connection.BeginTransaction();
 
+            //Obtém os comandos para chamada de stored procedures
             SqlCommand comandoTransferencia = GetTransferenciaCommand
                 (contaCredito.Id, contaDebito.Id, valor);
             SqlCommand comandoTaxa = GetTaxaTransferenciaCommand
                 (contaCredito.Id, TAXA_TRANSFERENCIA);
 
+            //Executa a chamada às stored procedures
             comandoTaxa.ExecuteNonQuery();
             comandoTransferencia.ExecuteNonQuery();
+
+            //Confirma as alterações no banco de dados
             transaction.Commit();
             Logger.LogInfo("Transferência realizada com sucesso.");
+
+            //Fecha conexão, libera recursos, destrói objetos
             comandoTransferencia.Dispose();
             transaction.Dispose();
             connection.Dispose();
+            Logger.LogInfo("Saindo do método Efetuar.");
         }
 
         private SqlCommand GetTransferenciaCommand(int contaDebitoId, int contaCreditoId, decimal valorTransferencia)
@@ -123,7 +151,7 @@ namespace _06.ByteBank
             return command;
         }
     }
-
+    
     [Serializable]
     public class SaldoInsuficienteException : Exception
     {
@@ -139,21 +167,27 @@ namespace _06.ByteBank
 
     class Logger
     {
+        private const string TIPO_INFO = "INFO";
+        private const string TIPO_ERRO = "ERRO";
+        private const string arquivoDeLog = "logs.txt";
+
         public static void LogInfo(string mensagem)
         {
-            Log(mensagem, "INFO");
+            Log(mensagem, TIPO_INFO);
         }
 
         public static void LogErro(string mensagem)
         {
-            Log(mensagem, "ERRO");
+            Log(mensagem, TIPO_ERRO);
         }
 
         private static void Log(string mensagem, string tipo)
         {
-            using (var sw = new StreamWriter("logs.txt", append: true))
+            using (var sw = new StreamWriter(arquivoDeLog, append: true))
             {
-                sw.WriteLine(DateTime.Now.ToLocalTime() + ": " + tipo + " - " + mensagem);
+                string linha = DateTime.Now.ToLocalTime() + ": " + tipo + " - " + mensagem;
+                Console.WriteLine(linha);
+                sw.WriteLine(linha);
             }
         }
     }
