@@ -1,25 +1,8 @@
-﻿namespace Q12
-{
-    class Programa
-    {
-        public void Executar()
-        {
+﻿//Que segmento de código você deve inserir na linha 03?
 
-        }
 
-        private bool IsNull(object obj)
-        {
-            //???
-            return false;
-        }
-    }
-}
-
-//Which code segment should you insert at line 03?
-
-//You are developing an application that uses several objects. The application includes the
-//following code segment. (Line numbers are included for reference only.)
-
+//Você está desenvolvendo um aplicativo que usa vários objetos.A aplicação inclui o
+//segmento de código a seguir. (Os números de linha são incluídos apenas para referência.)
 
 //```
 //01 private bool IsNull(object obj)
@@ -29,40 +12,43 @@
 //05 }
 //```
 
-//You need to evaluate whether an object is null.
-//Which code segment should you insert at line 03?
 
 //```
-//A
-//if (obj = null)
-//{
-//    return true;
-//}
-
-//B
 //if (null)
 //{
 //    return true;
 //}
+//```
 
-//C
+//Incorreto.A expressão da instrução `if` entre parênteses deve ser um valor booleano.
+//Correta
+
+//```
 //if (obj == 0)
 //{
 //    return true;
 //}
+//```
 
-//D
+//Incorreto.A comparação `obj == 0` indica se o parâmetro `obj` é um valor zero, e não se ele é nulo.
+//Correta
+
+//```
 //if (obj == null)
 //{
 //    return true;
 //}
+//```
+
+//Correto.Utilize o operador `==` para comparar valores e neste caso também utilize o literal `null`.
+// Correta
 
 //```
-//D.
-//Option D
+//if (obj = null)
+//{
+//    return true;
+//}
+//```
 
-//Explanation:
-//Use the == operator to compare values and in this case also use the null literal.
-
-
-
+//Incorreto.O operador `=` implica uma atribuição, e não comparação.
+//Correta

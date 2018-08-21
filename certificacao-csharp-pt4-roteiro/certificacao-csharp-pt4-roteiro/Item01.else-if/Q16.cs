@@ -1,81 +1,59 @@
-﻿namespace Q16
-{
-    class Programa
-    {
-        public void Executar()
-        {
-
-        }
-
-        private static decimal CalcularValorComJuros(decimal valorEmprestimo, int prazoEmprestimo)
-        {
-            decimal valorComJuros;
-            decimal jurosDoEmprestimo;
-            if (prazoEmprestimo > 0 && prazoEmprestimo < 5 && valorEmprestimo < 5000m)
-            {
-                jurosDoEmprestimo = 0.045m;
-            }
-            else if (prazoEmprestimo > 5 && valorEmprestimo > 5000m)
-            {
-                jurosDoEmprestimo = 0.085m;
-            }
-            else
-            {
-                jurosDoEmprestimo = 0.055m; //jurosDoEmprestimo = 0.0825m;
-            }
-            valorComJuros = valorEmprestimo * jurosDoEmprestimo * prazoEmprestimo;
-            return valorComJuros;
-        }
-    }
-}
-
-//You need to adjust the loanRate value to meet the requirements
-
-//You are evaluating a method that calculates loan interest- The application includes the
-//following code segment. (Line numbers are included for reference only.)
+﻿//Você está desenvolvendo um módulo de empréstimos para o banco ByteBank.
+//Você precisa ajustar o valor do empréstimo para atender os requisitos.
+//O método abaixo existe para calcular o valor dos juros a partir do valor do empréstimo solicitado, e o prazo para pagamento.
+//(As linhas abaixo são incluídas apenas para referência.)
 
 //```
-//01  private static decimal CalculateInterest(decimal loanAmount, int loanTerm)
-//02  {
-//03      decimal interestAmount;
-//04      decimal loanRate;
-//05      if (loanTerm > 0 && loanTerm < 5 && loanAmount < 5000m)
-//06      {
-//07          loanRate = 0.045m;
-//08      }
-//09      else if (loanTerm > 5 && loanAmount > 5000m)
-//10      {
-//11          loanRate = 0.085m;
-//12      }
-//13      else
-//14      {
-//15          loanRate = 0.0825m; //loanRate = 0.055m;
-//16      }
-//17      interestAmount = loanAmount * loanRate * loanTerm;
-//18      return interestAmount;
-//19  }
+//01   private static decimal CalcularValorDosJuros(decimal valorEmprestimo, int prazoEmprestimo)
+//02   {
+//03       decimal valorJuros;
+//04       decimal jurosDoEmprestimo;
+//05       if (prazoEmprestimo > 0 && prazoEmprestimo< 5 && valorEmprestimo< 5000m)
+//06       {
+//07           jurosDoEmprestimo = 0.045m;
+//08       }
+//09       else if (prazoEmprestimo > 5 && valorEmprestimo > 5000m)
+//10       {
+//11           jurosDoEmprestimo = 0.085m;
+//12       }
+//13       else
+//14       {
+//15           jurosDoEmprestimo = 0.055m; //jurosDoEmprestimo = 0.0825m;
+//16       }
+//17       valorJuros = valorEmprestimo* jurosDoEmprestimo * prazoEmprestimo;
+//18       return valorJuros;
+//19   }
 //```
 
-//When the loanTerm value is 3 and the loanAmount value is 9750, the loanRate must be set
-//to 8.25 percent. You need to adjust the loanRate value to meet the requirements.
-//What should you do?
+//Quando o `prazoEmprestimo` for 3 e o `valorEmprestimo` for 9750, valor de `jurosDoEmprestimo`
+//deve ser definido como 8,25%. Você precisa ajustar o valor do `jurosDoEmprestimo` para atender os requisitos.
+//O que você deve fazer?
 
-//A.
-//Replace line 04 with the following code segment: 
-//decimal loanRate = 0.0325m;
+//Susbtitua a linha 04 pelo seguinte segmento de código:
 
-//B.
-//Replace line 17 with the following code segment: 
-//interestAmount = loanAmount * 0.0825m * loanTerm;
+//decimal jurosDoEmprestimo = 0.0325m;
 
-//C.
-//Replace line 15 with the following code segment: 
-//loanRate = 0.0825m;
+//Incorreto.O valor de jurosDoEmprestimo sempre será sobrescrito por alguma outra atribuição posterior no método.
 
-//D.
-//Replace line 07 with the following code segment: 
-//loanRate = 0.0825m;
+//Alternativa correta
+//Susbtitua a linha 17 pelo seguinte segmento de código:
 
 
-//RESPOSTA: C
+//valorJuros = valorEmprestimo * 0.0825m * prazoEmprestimo;
 
+//Incorreto.Isso fixará os juros do empréstimo em 8,25%, não importando quais os parâmetros recebidos.
+
+//Alternativa correta
+//Susbtitua a linha 15 pelo seguinte segmento de código:
+
+
+//jurosDoEmprestimo = 0.0825m;
+
+//Correto.Quando o prazoEmprestimo for 3 e o valorEmprestimo for 9750, essa linha será executada e é nesse ponto em que o jurosDoEmprestimo deve ser definido como 0.0825m, que é o mesmo que 8,25%.
+
+//Alternativa correta
+//Susbtitua a linha 07 pelo seguinte segmento de código:
+
+//jurosDoEmprestimo = 0.0825m;
+ 
+//Incorreto.Quando o prazoEmprestimo for 3 e o valorEmprestimo for 9750, o programa não executará a linha 07, porque a instrução if será avaliada como false.

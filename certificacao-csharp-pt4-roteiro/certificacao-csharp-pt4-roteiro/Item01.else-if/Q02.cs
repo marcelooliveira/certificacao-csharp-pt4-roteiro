@@ -1,75 +1,98 @@
-﻿//Which two actions should you perform?
+﻿//Quais duas ações você deve tomar?
 
-//You are modifying an application that processes leases. The following code defines the
-//Lease class. (Line numbers are included for reference only.)
-
-//```
-using System;
-
-namespace ByteBank.Q02
-{
-    public class Emprestimo
-    {
-
-        private int prazo;
-        private const int PRAZO_MAXIMO_PAGAMENTO_ANOS = 5;
-        private const decimal JUROS = 0.034m;
-        public int Prazo
-        {
-            get
-            {
-                return prazo;
-            }
-            set
-            {
-                if (value <= PRAZO_MAXIMO_PAGAMENTO_ANOS)
-                {
-                    prazo = value;
-                }
-                else
-                {
-
-                }
-            }
-        }
-    }
-
-    public delegate void PrazoMaximoEstouradoHandler(object source, EventArgs e);
-}
+//Você está modificando uma aplicação que processa _empréstimos_.O código seguinte defines
+//a classe `Emprestimo`. (Números de linhas foram incluídos apenas para referência).
 
 //```
+//01    public class Emprestimo
+//02    {
+//03
+//04        private int prazo;
+//05        private const int PRAZO_MAXIMO_PAGAMENTO_ANOS = 5;
+//06        private const decimal JUROS = 0.034m;
+//07        public int Prazo
+//08        {
+//09            get
+//10            {
+//11                return prazo;
+//12            }
+//13            set
+//14            {
+//15                if (value <= PRAZO_MAXIMO_PAGAMENTO_ANOS)
+//16                {
+//17                    prazo = value;
+//18                }
+//19                else
+//20                {
+//21
+//22                }
+//23            }
+//24        }
+//25    }
+//26
+//27    public delegate void PrazoMaximoEstouradoHandler(object source, EventArgs e);
+//```
 
-//Leases are restricted to a maximum term of 5 years. The application must send a notification
-//message if a lease request exceeds 5 years.
-//You need to implement the notification mechanism.
-//Which two actions should you perform? (Each correct answer presents part of the solution.
-//Choose two.)
+//Os empréstimos devem ser restringidos a um período máximo de pagamento de 5 anos.A aplicação
+//deve enviar uma mensagem de notificação se uma solicitação de empréstimo exceder o período de 5 anos.
+
+//Você precisa implementar o mecanismo de notificação.Quais duas ações você deveria tomar? (Cada
+//resposta correta apresenta parte da solução.Escolha duas.)
+
+//Insira o seguinte segmento de código na linha 21:
 
 //```
-//A. Insert the following code segment at line 03:
-//public event MaximumTermReachedHandler OnMaximumTermReached;
-
-//B. Insert the following code segment at line 21:
-//if (OnMaximumTermReached != null)
+//if (OnPrazoMaximoEstourado != null)
 //{
-//    OnMaximumTermReached(this, new EventArgs () ):
+//    OnPrazoMaximoEstourado(this, new EventArgs());
 //}
+//```
 
-//C. Insert the following code segment at line 21:
-//value = MaximumTerm;
+//Isso mesmo.A condição `if (OnPrazoMaximoEstourado != null)` impede que o evento não assinado seja chamado na linha seguinte, prevenindo assim um erro de `NullReferenceException`.
+// Correta
 
-//D. Insert the following code segment at line 03:
-//public string MaximumTermReachedEvent { get; set; }
+//Insira o seguinte segmento de código na linha 03:
+//```
+//private string PrazoMaximoEstouradoEvent;
+//```
 
-//E. Insert the following code segment at line 03:
-//private string MaximumTermReachedEvent;
+//Incorreto.Um campo string não teria utilidade nesse cenário.
+//Correta
 
-//F. Insert the following code segment at line 21:
+
+//Insira o seguinte segmento de código na linha 03:
+
+//```
+//public string PrazoMaximoEstouradoEvent { get; set; }
+//```
+
+//Incorreto.Uma propriedade string não teria utilidade nesse cenário.
+//Correta
+
+
+//Insira o seguinte código na linha 03:
+
+//```
+//public event PrazoMaximoEstouradoHandler OnPrazoMaximoEstourado;
+//```
+
+//Isso mesmo.Precisamos declarar um evento na classe antes de invocá-lo.
+// Correta
+
+//Insira o seguinte segmento de código na linha 21:
+//```
 //value = 4;
 //```
 
-//# RESPOSTAS:
+//Incorreto.As regras de negócio não dizem que o prazo seja definido como 4 caso o valor atribuído à propriedade estoure o prazo máximo.
+//Correta
 
-//A.Option A
 
-//B.Option B
+//Insira o seguinte segmento de código na linha 21:
+
+//```
+//value = PRAZO_MAXIMO_PAGAMENTO_ANOS;
+//```
+
+//Incorreto.As regras de negócio não dizem que o prazo seja definido com o valor do prazo máximo, caso o valor atribuído à propriedade estoure o prazo máximo.
+//Correta
