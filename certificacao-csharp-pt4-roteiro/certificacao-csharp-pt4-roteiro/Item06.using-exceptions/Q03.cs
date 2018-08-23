@@ -1,62 +1,41 @@
-﻿using System;
+﻿//Qual segmento de código você deve usar?
 
-class Program
-{
-    public void Executar()
-    {
-        try
-        {
+//Você está desenvolvendo um aplicativo que usa manipulação de exceção estruturada.
 
-        }
-        catch (Exception ex)
-        {
-            ExceptionLogger.LogException(ex);
-            throw;
-        }
-    }
-}
+//O aplicativo inclui uma classe chamada `Logger`.
 
-class ExceptionLogger
-{
-    internal static void LogException(Exception ex)
-    {
-        throw new NotImplementedException();
-    }
-}
+//A classe `Logger` implementa um método chamado `Logger` usando o segmento de código a seguir:
 
-//Which code segment should you use?
+//```
+//public static void LogError(Exceção ex)
+//```
 
-//You are developing an application that uses structured exception handling. The application
-//includes a class named ExceptionLogger.
-//The ExceptionLogger class implements a method named LogException by using the
-//following code segment:
-//public static void LogException(Exception ex)
+//Você tem os seguintes requisitos:
 
-//You have the following requirements:
-//Log all exceptions by using the LogException() method of the ExceptionLogger class.
-//Rethrow the original exception, including the entire exception stack.
-//You need to meet the requirements.
-//Which code segment should you use?
+//* Você deve registrar todas as exceções usando o método `LogError()` da classe `Logger`.
+//* Lance novamente a exceção original, incluindo toda a pilha de exceções.
+
+//Qual segmento de código você deve usar?
 
 //```
 //A
 //catch (Exception ex)
 //{
-//    ExceptionLogger.LogException(ex);
+//    Logger.LogError(ex);
 //    throw;
 //}
 
 //B
 //catch (Exception ex)
 //{
-//    ExceptionLogger.LogException(ex);
+//    Logger.LogError(ex);
 //    throw ex;
 //}
 
 //C
 //catch
 //{
-//    ExceptionLogger.LogException(new Exception());
+//    Logger.LogError(new Exception());
 //    throw;
 //}
 
@@ -66,9 +45,3 @@ class ExceptionLogger
 //    var ex = new Exception();
 //    throw ex;
 //}
-//```
-
-//#RESPOSTA
-
-//A.
-//Option A
