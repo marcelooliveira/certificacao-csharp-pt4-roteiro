@@ -1,54 +1,20 @@
-﻿using System;
-using System.IO;
+﻿//Como você deveria completar o código relevante?
 
-namespace P04.Q4
-{
-    class Programa
-    {
-        public void Executar()
-        {
-            using (StreamReader sr = new StreamReader("log.txt"))
-            {
-                try
-                {
-                    string line;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        Console.WriteLine(line);
-                    }
-                }
-                catch (FileNotFoundException e)
-                {
-                    Console.Write(e.ToString());
-                    throw;
-                }
-            }
-        }
-    }
-}
+//Você está desenvolvendo um aplicativo que exibe informações de arquivos de log quando ocorrem erros.
+//O aplicativo solicitará que o usuário crie um relatório de erros que envie detalhes sobre o erro e a sessão para o administrador.
 
+//Quando um usuário abre um arquivo de log usando o aplicativo, o aplicativo lança uma exceção e fecha.
+//O aplicativo deve preservar as informações de rastreamento de pilha original quando ocorre uma exceção durante este processo.
+//Você precisa implementar o método que lê os arquivos de log.
 
-//How should you complete the relevant code?
+//Como você deve completar o código relevante nas lacunas abaixo?
 
-//DRAG DROP
-//You develop an application that displays information from log files when errors occur. The
-//application will prompt the user to create an error report that sends details about the error
-//and the session to the administrator.
-//When a user opens a log file by using the application, the application throws an exception
-//and closes.
-//The application must preserve the original stack trace information when an exception occurs
-//during this process.
-//You need to implement the method that reads the log files.
-//How should you complete the relevant code? (To answer, drag the appropriate code
-//segments to the correct locations in the answer area. Each code segment may be used
-//once, more than once, or not at all. You may need to drag the split bar between panes or
-//scroll to view content.)
 
 //```
 //opções:
 //=======
 //using (StringReader sr = new StringReader("log.txt"))
-//using (StreamReader sr = new StringReader("log.txt"))
+//using (StreamReader sr = new StreamReader("log.txt"))
 //throw new FileNotFoundException:
 //throw;
 
@@ -73,5 +39,5 @@ namespace P04.Q4
 //)
 //```
 
-//![](https://cdn.briefmenow.org/wp-content/uploads/70-483-v2/33.jpg)
+
 
