@@ -1,140 +1,64 @@
-﻿using System.Data.SqlClient;
-using System.Transactions;
+﻿//Você tem um aplicativo que acessa um banco de dados do Microsoft SQL Server.
 
-namespace Q20
-{
-    class Programa
-    {
-        private readonly string connectionString;
+//O banco de dados contém um procedimento armazenado chamado `proc1`, que acessa várias linhas de dados em várias tabelas.
 
-        public void Executar()
-        {
-            SqlConnection connection = new SqlConnection(connectionString);
-            SqlCommand command = new SqlCommand("proc1", connection);
-            SqlTransaction transaction = connection.BeginTransaction();
-            try
-            {
-                connection.Open();
-                command.ExecuteNonQuery();
-                transaction.Commit();
-            }
-            catch
-            {
-                transaction.Rollback();
-            }
-            finally
-            {
-                command.Dispose();
-                connection.Dispose();
-            }
-        }
-    }
-}
+//Você precisa garantir que, após a execução de `proc1`, o banco de dados fique em um estado consistente.
 
-//You need to ensure that after Proc1 executes, the database is left in a consistent state
+//Você tem um aplicativo que acessa um banco de dados do Microsoft SQL Server.
 
-//DRAG DROP
-//You have an application that accesses a Microsoft SQL Server database.
-//The database contains a stored procedure named Proc1. Procl accesses several rows of
-//data across multiple tables.
-//You need to ensure that after Proc1 executes, the database is left in a consistent state.
-//While Proc1 executes, no other operation can modify data already read or changed by
-//Proc1. (Develop the solution by selecting and ordering the required code snippets.
-//You may not need all of the code snippets.)
+//O banco de dados contém um procedimento armazenado chamado `proc1`, que acessa várias linhas de dados em várias tabelas.
+
+//Você precisa garantir que, após a execução de `proc1`, o banco de dados fique em um estado consistente.
+
+//Para atender esses requisitos, monte um algoritmo na sequência correta, escolhendo entre os blocos de código abaixo:
+
 
 //```
-//SqlTransaction transaction = connection.BeginTransaction
-//(System.Data.IsolationLevel.RepeatableRead);
-//SqlTransaction transaction = connection.BeginTransaction
-//(System.Data.IsolationLevel.ReadUncommitted);
+//[Bloco 1]
+//try
+//{
+//    connection.Open();
+//    command.ExecuteNonQuery();
+//```
 
-
-
-//} finally {
-
-
-
-//command.Dispose();
-//connection.Dispose();
-//}
-
-
-
-//try {
-//connection.Open();
-//command.ExecuteNonQuery():
-
-
-//TransactionScope transaction = new TransactionScope();
-
-
-
+//```
+//[Bloco 2]
 //SqlConnection connection = new SqlConnection(connectionString);
-//SqlCommand command = new SqlCommand("procl", connection);
+//SqlCommand command = new SqlCommand("proc1", connection);
+//```
 
+//```
+//[Bloco 3]
+//SqlTransaction transaction = connection.BeginTransaction();
+//```
 
-//} catch {
+//```
+//[Bloco 4]
+//}
+//finally
+//{
+//```
 
-
+//```
+//[Bloco 5]
 //transaction.Rollback();
+//```
 
-
+//```
+//[Bloco 6]
 //transaction.Commit();
 //```
 
-//Explanation:
-
-//Box 1:
-
-//SqlConnection connection = new SqlConnection(connectionString);
-//SqlCommand command = new SqlCommand("procl", connection);
-
-
-//Box 2:
-//TransactionScope transaction = new TransactionScope();
-
-
-//Box 3:
-//try {
-//connection.Open();
-//command.ExecuteNonQuery():
-
-
-//Box 4: transaction.Commit();
-
-
-//Box 5:
-
-//} catch {
-
-
-//Box 6: transaction.Rollback();
-
-//Box 7: } finally {
-
-//Box 8:
+//```
+//[Bloco 7]
 //command.Dispose();
-//connection.Dispose();
+//    connection.Dispose();
 //}
+//```
 
-//Note:
-//* Box 1: Start with the sqlconnection
-//* Box 2: Open the SQL transaction (RepeatableRead)
-/// IsolationLevel
-//Specifies the isolation level of a transaction.
-/// RepeatableRead
-//Volatile data can be read but not modified during the transaction. New data can be added
-//during the transaction.
-/// ReadCommitted
-//Volatile data cannot be read during the transaction, but can be modified.
-/// ReadUncommitted
-//Volatile data can be read and modified during the transaction.
-//Box 3: Try the query
-//Box 4: commit the transaction
-//Box 5: Catch the exception (a failed transaction)
-//Box 6: Rollback the transaction
-//Box 7: Final cleanup
-//Box 8: Clean up (close command and connection).
-//Reference: SqlConnection.BeginTransaction Method
-//Incorrect:
-//The transaction is not set up by transactionscope here. Begintransaction is used.
+//```
+//[Bloco 8]
+//}
+//catch
+//{
+//```
