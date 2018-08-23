@@ -20,7 +20,11 @@ namespace Q21
                 string numeroPedido = null;
                 ProcessOrders(numeroPedido);
             }
-            catch (ArgumentException e) //catch (ArgumentNullException e)
+            catch (ArgumentException e)
+            {
+                Console.WriteLine("{0} Ocorreu uma exceção.", e);
+            }
+            catch (ArgumentNullException e)
             {
                 Console.WriteLine("{0} Ocorreu uma exceção.", e);
             }
