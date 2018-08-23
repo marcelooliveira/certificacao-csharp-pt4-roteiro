@@ -1,50 +1,5 @@
-﻿using System;
-
-namespace Q05
-{
-    class Programa
-    {
-        public void Executar()
-        {
-            try
-            {
-                FacaAlgo();
-            }
-            catch (AluraValidationException ex)
-            {
-                Log(ex);
-            }
-            catch (AluraException ex)
-            {
-                Log(ex);
-            }
-            catch (Exception ex)
-            {
-                Log(ex);
-            }
-        }
-
-        private void Log(Exception ex)
-        {
-            throw new NotImplementedException();
-        }
-
-        private void FacaAlgo()
-        {
-            throw new NotImplementedException();
-        }
-    }
-
-    public class AluraException : Exception {  }
-    public class AluraDbException : AluraException {  }
-    public class AluraValidationException : AluraException {  }
-}
-
-//How should you complete the relevant code?
-
-//DRAG DROP
-//You are developing an application that implements a set of custom exception types. You
-//declare the custom exception types by using the following code segments:
+﻿//Você está desenvolvendo um aplicativo que implementa um conjunto de tipos de exceção personalizados.
+//Você declara os tipos de exceção customizada usando os seguintes segmentos de código:
 
 //```
 //public class AluraException : System.Exception { ... }
@@ -52,9 +7,8 @@ namespace Q05
 //public class AluraValidationException : AluraException { ... }
 //```
 
-//The application includes a function named DoWork that throws .NET Framework exceptions
-//and custom exceptions.
-//The application contains only the following logging methods:
+//O aplicativo inclui uma função chamada `FaçaAlgo`, que lança exceções do .NET Framework e exceções personalizadas.
+//O aplicativo contém apenas os seguintes métodos de log:
 
 //```
 //static void Log(Exception ex) { ... }
@@ -62,29 +16,18 @@ namespace Q05
 //static void Log(AluraValidationException ex) { ... }
 //```
 
-//The application must meet the following requirements:
-//When AluraValidationException exceptions are caught, log the information by
-//using the static void Log (AluraValidationException ex) method.
-//When AluraDbException or other AluraException exceptions are
-//caught, log the information by using the static void I oq( AluraException ex)
-//method.
-//You need to meet the requirements.
-//How should you complete the relevant code? (To answer, drag the appropriate code
-//segments to the correct locations in the answer area. Each code segment may be used
-//once, more than once, or not at all. You may need to drag the split bar between panes or
-//scroll to view content.)
+//O aplicativo deve atender aos seguintes requisitos:
 
-//```
-//(Exception ex)
-//(AluraException ex)
-//(AluraValidationException ex)
-//(AluraException ex)
-//```
+//* Quando as exceções `AluraValidationException` são capturadas, registre as informações usando o método estático `void Log(AluraValidationException ex)`.
+//* Quando `AluraDbException` ou outras exceções `AluraException` são capturadas, registre o log das informações usando o método `static void Log(AluraException ex)`.
+
+//Como você substituiria as lacunas no fragmento de código abaixo para atender a esses requisitos?
+
 
 //```
 //try
 //{
-//    DoWork();
+//    FacaAlgo();
 //}
 //catch [LACUNA 1]
 //{
@@ -100,12 +43,9 @@ namespace Q05
 //}
 //```
 
-//# resposta
-
-
 //```
-//(AluraValidationException ex)
-//(AluraException ex)
-//(Exception ex)
+//[LACUNA 1]: (AluraValidationException ex)
+//[LACUNA 2]: (AluraException ex)
+//[LACUNA 3]: (Exception ex)
 //```
 
