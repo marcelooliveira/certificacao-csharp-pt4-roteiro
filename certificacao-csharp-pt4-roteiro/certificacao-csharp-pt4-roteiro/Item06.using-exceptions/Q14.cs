@@ -1,44 +1,12 @@
-﻿using System;
-using System.Data.SqlClient;
+﻿//Você está criando um método que salva informações em um banco de dados.
 
-namespace Q14
-{
-    class Programa
-    {
-        public void Executar()
-        {
-            try
-            {
+//Você tem uma classe estática chamada `LogHelper`, que tem um método chamado `Log` para registrar exceção.
 
-            }
-            catch (SqlException ex)
-            {
-                LogHelper.Log(ex);
-                throw;
-            }
-        }
-    }
+//Você precisa usar o método `Log` do `LogHelper` para registrar a exceção gerada pelo servidor de banco de dados. 
 
-    internal class LogHelper
-    {
-        internal static void Log(Exception ex)
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
+//A solução deve garantir que a exceção possa ser capturada pelo método de chamada, enquanto preserva o rastreio de pilha original.
 
-//How should you write the catch block?
-
-//DRAG DROP
-//You are creating a method that saves information to a database.
-//You have a static class named LogHelper. LogHelper has a method named Log to log the
-//exception.
-//You need to use the LogHelper Log method to log the exception raised by the database
-//server. The solution must ensure that the exception can be caught by the calling method,
-//while preserving the original stack trace.
-//How should you write the catch block? (Develop the solution by selecting and ordering the
-//required code snippets. You may not need all of the code snippets.)
+//Como você deve escrever o bloco `catch`?
 
 //```
 //catch {
@@ -52,28 +20,33 @@ namespace Q14
 //throw new SqlException();
 //```
 
-//![](https://cdn.briefmenow.org/wp-content/uploads/70-483-v2/167.jpg)
 
-//Explanation:
-//Box 1:
-
+//A
 //catch (SqlException ex) {
-
-//Box 2:
-
 //LogHelper.Log(ex)
-
-//Box 3:
-
 //throw;
-
-//Box 4:
-
 //}
 
-//Note:
-//Catch the database exception, log it, and then rethrow it.
 
-//* SQLException
-//An exception that provides information on a database access error or other errors.
+//B
+//catch (SqlException ex) {
+//throw;
+//LogHelper.Log(ex)
+//}
 
+
+//C
+//catch (SqlException ex) {
+//LogHelper.Log(ex)
+//throw new SqlException();
+//}
+
+
+//D
+//catch (FileNotFoundException ex) {
+//throw;
+//}
+//catch (SqlException ex) {
+//LogHelper.Log(ex)
+//throw new SqlException();
+//}
