@@ -1,142 +1,67 @@
-﻿using System;
+﻿//Qual segmento de código você deve usar?
 
-namespace Q26
-{
-    class Programa
-    {
-        public void Executar()
-        {
+//Você está desenvolvendo um aplicativo que inclui métodos denominados `Emprestimo`,
+//`ProcessarEmprestimo` e `FinanciarEmprestimo`. O aplicativo define as configurações de construção denominadas TRIAL,
+//BÁSICO e AVANÇADO.
+//Você tem os seguintes requisitos:
 
-#if ADVANCED
-            ExecuteRelatorioAvancado();
-#else
-            ExecuteRelatorioSimples();
-#endif
+//* A configuração de compilação do TRIAL deve executar apenas o método `Emprestimo()`.
+//* A configuração de compilação do BASIC deve executar todos os três métodos.
+//* A configuração de construção ADVANCED deve executar apenas os métodos `Emprestimo()` e `ProcessarEmprestimo()`.
 
-#if TRIAL
-                AvaliarEmprestimo();
-#elif BASIC
-                AvaliarEmprestimo();
-                ProcessarEmprestimo();
-                FinanciarEmprestimo();
-#elif ADVANCED
-            AvaliarEmprestimo();
-            ProcessarEmprestimo();
-#endif
-
-
-#if TRIAL
-                AvaliarEmprestimo();
-#elif BASIC
-                AvaliarEmprestimo();
-                ProcessarEmprestimo();
-                FinanciarEmprestimo();
-#else
-            AvaliarEmprestimo();
-            ProcessarEmprestimo();
-#endif
-        }
-
-        private void ExecuteRelatorioSimples()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void FinanciarEmprestimo()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void ProcessarEmprestimo()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void AvaliarEmprestimo()
-        {
-            throw new NotImplementedException();
-        }
-    }
-}
-
-//Which code segment should you use?
-
-//You are developing an application that includes methods named EvaluateLoan,
-//ProcessLoan, and FundLoan. The application defines build configurations named TRIAL,
-//BASIC, and ADVANCED.
-//You have the following requirements:
-//The TRIAL build configuration must run only the EvaluateLoan() method.
-//The BASIC build configuration must run all three methods.
-//The ADVANCED build configuration must run only the EvaluateLoan() and ProcessLoan() methods.
-//You need to meet the requirements. Which code segment should you use?
+//Você precisa atender aos requisitos. Qual segmento de código você deve usar?
 
 //```
 //A
 //#if TRIAL
-//    #warning EvaluateLoan();
-//    #error ProcessLoan();
-//    #error FundLoan();
+//    #warning AvaliarEmprestimo();
+//    #error ProcessarEmprestimo();
+//    #error FinanciarEmprestimo();
 //#elif ADVANCED
-//    #warning EvaluateLoant);
-//    #warning ProcessLoan();
-//    #warning FundLoan();
+//    #warning AvaliarEmprestimo();
+//    #warning ProcessarEmprestimo();
+//    #warning FinanciarEmprestimo();
 //#else
-//    #warning EvaluateLoan();
-//    #warning ProcessLoan();
-//    #error FundLoan();
+//    #warning AvaliarEmprestimo();
+//    #warning ProcessarEmprestimo();
+//    #error FinanciarEmprestimo();
 //#endif
 
 //B
 //#if TRIAL
-//    EvaluateLoan();
+//    AvaliarEmprestimo();
 //#elif ADVANCED
-//    EvaluateLoan();
-//    ProcessLoan();
-//    FundLoan();
+//    AvaliarEmprestimo();
+//    ProcessarEmprestimo();
+//    FinanciarEmprestimo();
 //#else
-//    EvaluateLoan();
-//    ProcessLoan();
+//    AvaliarEmprestimo();
+//    ProcessarEmprestimo();
 //#endif
 
 //C
 //#if TRIAL
-//    EvaluateLoan();
+//    AvaliarEmprestimo();
 //#elif BASIC
-//    EvaluateLoan();
-//    ProcessLoan();
-//    FundLoan();
+//    AvaliarEmprestimo();
+//    ProcessarEmprestimo();
+//    FinanciarEmprestimo();
 //#else
-//    EvaluateLoan();
-//    ProcessLoan();
+//    AvaliarEmprestimo();
+//    ProcessarEmprestimo();
 //#endif
 
 
 //D
 //#if TRIAL
-//    EvaluateLoan();
+//    AvaliarEmprestimo();
 //#elif BASIC
-//    EvaluateLoan();
-//    ProcessLoan();
-//#error FundLoan();
+//    AvaliarEmprestimo();
+//    ProcessarEmprestimo();
+//#error FinanciarEmprestimo();
 //#else
-//    EvaluateLoan();
-//    ProcessLoan();
-//    FundLoan();
+//    AvaliarEmprestimo();
+//    ProcessarEmprestimo();
+//    FinanciarEmprestimo();
 //#endif
 //```
-
-//A.
-//Option A
-
-//B.
-//Option B
-
-//C.
-//Option C
-
-//D.
-//Option D
-
-//# resposta 
-//**C.
-//Option C**
