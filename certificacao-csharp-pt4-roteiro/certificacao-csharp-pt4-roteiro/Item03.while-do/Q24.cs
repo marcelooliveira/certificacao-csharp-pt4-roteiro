@@ -1,28 +1,4 @@
-﻿using System;
-using System.IO;
-
-namespace Q24
-{
-    class Programa
-    {
-        public void Executar()
-        {
-            using (StreamWriter writer = new StreamWriter(@"C:\console.txt"))
-            {
-                Console.SetOut(writer);
-                using (FileStream stream = new FileStream(@"C:\file.txt", FileMode.Open))
-                {
-                    using (StreamReader reader = new StreamReader(stream))
-                    {
-                        while (!reader.EndOfStream) Console.WriteLine(reader.ReadLine());
-                    }
-                }
-            }
-        }
-    }
-}
-
-//complete each statement according to the information presented in the code.
+﻿//Preencha cada declaração de acordo com as informações apresentadas no código.
 
 //```
 //using (StreamWriter writer = new StreamWriter(@"C:\console.txt"))
@@ -38,29 +14,18 @@ namespace Q24
 //}
 //```
 
-//To answer, complete each statement according to the information presented in the code.
+//Para responder, preencha cada declaração de acordo com as informações apresentadas no código.
 
-//```
-//If File.txt does NOT exist in the root of C:, will be thrown:
-//ArgumentNullException
-//FileLoadException
-//FileNotFoundException
-//PipeException
+//Se o arquivo `File.txt` NÃO EXISTIR na raiz do diretório `C:` será lançada uma exceção do tipo:
+//`ArgumentNullException`
+//`FileLoadException`
+//`FileNotFoundException`
+//`PipeException`
 
-//The final output of the streaming operation will be:
-//a console window
-//the Console.txt file
-//the file.txt file
-//the Visual Studio Debug console
-//```
+//Os dados serão gravados em qual dispositivo?
+//Uma janela de console
+//O arquivo `Console.txt`
+//O arquivo `file.txt`
+//O console de debug do `Visual Studio`
 
-
-//**RESPOSTA:**
-
-
-//If File.txt does NOT exist in the root of C:, will be thrown:
-//**FileNotFoundException**
-
-//The final output of the streaming operation will be:
-//**the Console.txt file**
 
