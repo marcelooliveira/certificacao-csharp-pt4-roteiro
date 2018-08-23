@@ -1,74 +1,46 @@
-﻿using System;
+﻿//Complete o código
 
-namespace Q06
-{
-    class Programa
-    {
-        public void Executar()
-        {
+//Você está testando um aplicativo.O aplicativo inclui métodos chamados `CalcularValorJuros` e `GravarLog`.O método `CalcularValorJuros()` calcula juros de empréstimos.O método `GravarLog()` envia mensagens de diagnóstico para uma janela do console.
 
-        }
+//Você tem os seguintes requisitos:
 
-        private static decimal CalcularValorComJuros(decimal valorEmprestimo, int prazoEmprestimo, decimal jurosDoEmprestimo)
-        {
-            decimal valorComJuros = valorEmprestimo * jurosDoEmprestimo * prazoEmprestimo;
-            #if DEBUG
-            GravarLog("Valor com juros : ", valorComJuros.ToString("c"));
-            #endif
-            return valorComJuros;
-        }
+//O método `CalcularValorJuros()` deve ser executado para todas as configurações de build.O método `GravarLog()` deve ser chamado apenas para compilações de depuração (debug). Você precisa garantir que os métodos sejam executados corretamente.
 
-        public static void GravarLog(string mensagem, string detalhe)
-        {
-            Console.WriteLine("Log: {0} - {1}", mensagem, detalhe);
-        }
-    }
-}
-
-//How should you complete the relevant code?
-
-//DRAG DROP
-//You are testing an application. The application includes methods named CalculateInterest
-//and LogLine. The CalculateInterest() method calculates loan interest. The LogLine() method
-//sends diagnostic messages to a console window.
-//You have the following requirements:
-//The CalculateInterest() method must run for all build configurations.
-//The LogLine() method must be called only for debug builds.
-//You need to ensure that the methods run correctly.
-//How should you complete the relevant code? (To answer, drag the appropriate code
-//segments to the correct locations in the answer area. Each code segment may be used
-//once, more than once, or not at all. You may need to drag the split bar between panes or
-//scroll to view content.)
-
-//OPÇÕES:
+//Como você deveria completar o código relevante nas lacunas 1 e 2 abaixo?
 
 //```
-//[Conditional("DEBUG")}
-//[Conditional("RELEASE")]
-//#if DEBUG
-//#region DEBUG
-//#endif
-//#endregion
+//private static decimal CalcularValorJuros(decimal valorEmprestimo, int prazoEmprestimo, decimal jurosDoEmprestimo)
+//{
+//    decimal valorJuros = valorEmprestimo * jurosDoEmprestimo * prazoEmprestimo;
+//    [LACUNA 1]
+//GravarLog("Valor com juros : ", valorComJuros.ToString("c"));
+//    [LACUNA 2]
+//    return valorJuros;
+//}
+
+//public static void GravarLog(string mensagem, string detalhe)
+//{
+//    Console.WriteLine("Log: {0} - {1}", mensagem, detalhe);
+//}
 //```
 
 
 //```
-//private static decimal CalculateInterest(decimal loanAmount, int loanTerm, decimal loanRate)
-//(
-//    decimal interestAmount = loanAmount * loanRate * loanTerm;
-//    [LACUNA 1] 
-//    LogLine("Interest Amount : ", interestAmount.ToString("c"));
-//    [LACUNA 2] 
-//    return interestAmount;
-//)
-//public static void LogLine(string message, string detail)
-//(
-//    Console.WriteLine("Log: {0} - {1}", message, detail);
-//)
+//[LACUNA 1]: #if DEBUG
+//[LACUNA 2]: #endif
 //```
 
-//# resposta
 //```
-//[LACUNA 1] #if DEBUG
-//[LACUNA 2] #endif
+//[LACUNA 1]: [Conditional("DEBUG")]
+//[LACUNA 2]: [Conditional("RELEASE")]
+//```
+
+//```
+//[LACUNA 1]: #region DEBUG
+//[LACUNA 2]: #endregion
+//```
+
+//```
+//[LACUNA 1]: #if DEBUG
+//[LACUNA 2]: #endregion
 //```

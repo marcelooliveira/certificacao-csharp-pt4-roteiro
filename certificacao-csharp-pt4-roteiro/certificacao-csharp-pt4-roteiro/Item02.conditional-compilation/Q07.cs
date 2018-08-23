@@ -6,51 +6,51 @@
         {
             string caminhoImg = "";
             #if (DEBUG)
-                caminhoImg = "TempFolder/Images/";
+                caminhoImg = "DiretorioLocal/Imagens/";
             #else
-                imgPath = "DevFolder/Images/":
+                caminhoImg = "DiretorioRede/Imagens/";
             #endif
         }
     }
 }
-//Which code segment should you use?
 
-//You are developing an application that will process orders. The debug and release versions
-//of the application will display different logo images.
-//You need to ensure that the correct image path is set based on the build configuration.
-//Which code segment should you use?
+//Qual segmento de código você deve usar?
+
+//Você está desenvolvendo um aplicativo para processamento de pedidos.
+//The debug and release versions
+//As versões de _debug_ e _release_
+//do aplicativo exibirão imagens de logotipo diferentes.
+//Você precisa garantir que o caminho correto da imagem seja definido com base na configuração da compilação.
+
+//Qual segmento de código você deve usar?
+
 
 //```
 //#if (DEBUG)
-//    imgPath = "TempFolder/Images/";
+//    imgPath = "DiretorioLocal/Imagens/";
 //#elif (RELEASE)
-//    imgPath = "DevFolder/Images/":
+//    imgPath = "DiretorioRede/Imagens/":
 //#endif
 
 //if (DEBUG)
-//    imgPath = "TempFolder/Images/";
+//    imgPath = "DiretorioLocal/Imagens/";
 //else
-//    imgPath = "DevFolder/Images/";
+//    imgPath = "DiretorioRede/Imagens/";
 //endif
 
 //#if (DEBUG)
-//    imgPath = "TempFolder/Images/";
+//    imgPath = "DiretorioLocal/Imagens/";
 //#else
-//    imgPath = "DevFolder/Images/":
+//    imgPath = "DiretorioRede/Imagens/":
 //#endif
 
 //if (Debugger.IsAttached)
 //{
-//    imgPath = "TempFolder/Images/":
+//    imgPath = "DiretorioLocal/Imagens/":
 //}
 //else
 //{
-//    imgPath = "DevFolder/Images/";
+//    imgPath = "DiretorioRede/Imagens/";
 //}
 //```
-
-//RESPOSTA
-
-//C.
-//Option C
 

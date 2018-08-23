@@ -1,80 +1,41 @@
-﻿using System;
+﻿//Qual código você deve usar?
 
-namespace Q22
-{
-    class Programa
-    {
-        public void Executar()
-        {
-#if (DEBUG)
-            Console.WriteLine("Entrando em modo DEBUG");
-#else
-            Console.WriteLine("Entrando em modo RELEASE"):
-#endif
-        }
-    }
-}
+//Você precisa escrever um aplicativo de console que atenda aos seguintes requisitos:
+//Se o aplicativo é compilado no modo de depuração, a saída do console deve exibir "Entrando em modo debug".
+//Se o aplicativo é compilado no modo Release, a saída do console deve exibir "Entrando em modo release".
 
-//Which code should you use?
-
-//You need to write a console application that meets the following requirements:
-//If the application is compiled in Debug mode, the console output must display Entering
-//debug mode.
-//If the application is compiled in Release mode, the console output must display Entering
-//release mode.
-//Which code should you use?
+//Qual código você deve usar?
 
 //```
 //#if (TRACE)
-//    Console.WriteLine("Entering debug mode");
+//    Console.WriteLine(""Entrando em modo debug"");
 //#else
-//    Console.WriteLine("Entering release mode");
+//    Console.WriteLine(""Entrando em modo release"");
 //#endif
 
 
 //#if (DEBUG)
-//    Console.WriteLine("Entering debug mode");
+//    Console.WriteLine(""Entrando em modo debug"");
 //#else
-//    Console.WriteLine("Entering release mode"):
+//    Console.WriteLine(""Entrando em modo release""):
 //#endif
 
 
 //if(System.Diagnostics.Debugger.IsAttached)
-//    Console.WriteLine("Entering debug mode");
+//    Console.WriteLine(""Entrando em modo debug"");
 //else
-//    Console.WriteLine("Entering release mode");
+//    Console.WriteLine(""Entrando em modo release"");
 
 //#region DEBUG
-//    Console.WriteLine("Entering debug mode");
+//    Console.WriteLine(""Entrando em modo debug"");
 //#endregion
 //#region RELEASE
-//    Console.WriteLine("Entering release mode"):
+//    Console.WriteLine(""Entrando em modo release""):
 //#endregion
 //```
 
 
-
-//A.
-//Option A
-
-//B.
-//Option B
-
-//C.
-//Option C
-
-//D.
-//Option D
-
 //RESPOSTA: B
 
-//Explanation:
-//When the C# compiler encounters an #if directive, followed eventually by an #endif directive,
-//it will compile the code between the directives only if the specified symbol is defined. Unlike
-//C and C++, you cannot assign a numeric value to a symbol; the #if statement in C# is
-//Boolean and only tests whether the symbol has been defined or not. For example,
-//#define DEBUG
-//// …
-//#if DEBUG
-//Console.WriteLine(“Debug version”);
-//#endif
+//Quando o compilador C # encontra uma diretiva # if, seguida, eventualmente, por uma diretiva #endif,
+//ele irá compilar o código entre as diretivas somente se o símbolo especificado estiver definido.
