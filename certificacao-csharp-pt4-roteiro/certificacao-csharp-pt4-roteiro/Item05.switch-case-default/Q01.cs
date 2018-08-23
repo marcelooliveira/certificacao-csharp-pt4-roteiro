@@ -1,55 +1,27 @@
-﻿class Q01
-{
-    //How should you complete the relevant code?
+﻿//Você está implementando um método de biblioteca que aceita um parâmetro de caractere e retorna uma string.
+//Se a pesquisa for bem-sucedida, o método deve retornar o valor da string correspondente.
 
-    //HOTSPOT
-    //You are implementing a library method that accepts a character parameter and returns a
-    //string.
-    //If the lookup succeeds, the method must return the corresponding string value. If the lookup
-    //fails, the method must return the value “invalid choice.”
-    //You need to implement the lookup algorithm.
-    //How should you complete the relevant code? (To answer, select the correct keyword in each
-    //drop-down list in the answer area.)
+//Se a pesquisa falha, o método deve retornar o texto "escolha inválida".
 
-    //```
-    //public string GetResponse(char letter)
-    //{
-    //    string response;
-    //    [LACUNA 1](letter)
-    //    {
-    //        [LACUNA 2] 'a':
-    //            response = "animal":
-    //            break;
-    //        [LACUNA 3] 'm':
-    //            response = "mineral";
-    //            break:
-    //        [LACUNA 4]:
-    //            response = "invalid choice";
-    //            break:
-    //    }
-    //    return response;
-    //}
-    //```
+//```
+//public string GetResposta(char letra)
+//{
+//    string resposta;
+//    [LACUNA 1] (letra)
+//    {
+//        [LACUNA 2] 'a':
+//            resposta = "animal";
+//            break;
+//        [LACUNA 3] 'm':
+//            resposta = "mineral";
+//            break;
+//        [LACUNA 4]:
+//            resposta = "escolha inválida";
+//            break;
+//    }
+//return resposta;
+//}
+//```
 
-    //# RESPOSTA:
+//Escolha as opções abaixo que representam corretament o preenchimento das lacunas do código.
 
-    //```
-    public string GetResposta(char letra)
-    {
-        string resposta;
-        switch (letra)
-        {
-            case 'a':
-                resposta = "animal";
-                break;
-            case 'm':
-                resposta = "mineral";
-                break;
-            default:
-                resposta = "escolha inválida";
-                break;
-        }
-        return resposta;
-    }
-    //```
-}
