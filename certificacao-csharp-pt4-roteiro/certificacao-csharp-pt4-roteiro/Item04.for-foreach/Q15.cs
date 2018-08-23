@@ -59,110 +59,139 @@ namespace Q15
     }
 }
 
-//Which code segment should you use?
+//Qual segmento de código você deve usar?
 
-//You are modifying an existing banking application.
-//The application includes an Account class and a Customer class. The following code
-//segment defines the classes.
+//Você está modificando um aplicativo bancário existente. O aplicativo inclui uma classe `Account` e uma classe `Customer`.
+//O seguinte código segmento define as classes.
 
 
 //```
-//class Account
+//class Programa
 //{
-//    public Account(decimal balance, int term, decimal rate)
+//    public void Executar()
 //    {
-//        Term = term;
-//        Balance = balance;
-//        Rate = rate;
+//        IList<Cliente> clientes = new List<Cliente>();
+//        IList<Conta> contas = new List<Conta>
+//            {
+//                new Conta(1000m, 2, 0.025m),
+//                new Conta(3000m, 4, 0.045m),
+//                new Conta(5000m, 6, 0.045m)
+//            };
+
+//        clientes.Add(new Cliente("José", "Silva", contas));
+
+//        Collection<Conta> contasEspeciais = new Collection<Conta>();
+
+//        foreach (Cliente cliente in clientes)
+//        {
+//            foreach (Conta conta in cliente.Contas)
+//            {
+//                if (conta.Saldo >= 1000000m)
+//                {
+//                    contasEspeciais.Add(conta);
+//                }
+//            }
+//        }
 //    }
-//    public decimal Balance { get; set; }
-//    public decimal Rate { get; set; }
-//    public int Term { get; set; }
 //}
 
-//class Customer
+//class Conta
 //{
-//    public Customer(string firstName, string lastName, Collection accounts)
+//    public Conta(decimal saldo, int periodo, decimal juros)
 //    {
-//        FirstName = firstName;
-//        LastName = lastName;
-//        AccountCollection = accounts;
+//        Periodo = periodo;
+//        Saldo = saldo;
+//        Juros = juros;
 //    }
-//    public string FirstName { get; set; }
-//    public string LastName { get; set; }
-//    public Collection<Account> AccountCollection { get; set; }
+//    public decimal Saldo { get; set; }
+//    public decimal Juros { get; set; }
+//    public int Periodo { get; set; }
+//}
+
+//class Cliente
+//{
+//    public Cliente(string nome, string sobrenome, IList<Conta> contas)
+//    {
+//        Nome = nome;
+//        Sobrenome = sobrenome;
+//        Contas = contas;
+//    }
+//    public string Nome { get; set; }
+//    public string Sobrenome { get; set; }
+//    public IList<Conta> Contas { get; set; }
 //}
 //```
 
-//You populate a collection named customerCollection with Customer and Account objects by
-//using the following code segment:
+//Você preenche uma coleção chamada `clientes` com objetos `Cliente` e `Conta` 
+//usando o seguinte segmento de código:
 
 //```
-//Collection<Collection> customerCollection = new Collection();
-//Collection<Account> customerAccounts = new Collection();
-//customerAccounts.Add(new Account(1000m, 2, 0.025m));
-//customerAccounts.Add(new Account(3000m, 4, 0.045m));
-//customerAccounts.Add(new Account(5000m, 6, 0.045m)):
-//customerCollection.Add(new Customer("David", "Jones", customerAccounts));
+//IList<Cliente> clientes = new List<Cliente>();
+//IList<Conta> contas = new List<Conta>();
+//contas.Add(new Account(1000m, 2, 0.025m));
+//contas.Add(new Account(3000m, 4, 0.045m));
+//contas.Add(new Account(5000m, 6, 0.045m)):
+//clientes.Add(new Cliente("José", "Silva", contas));
 //```
 
-//You create a largeCustomerAccounts collection to store the Account objects by using the
-//following code segment:
-//Collection<Account> largeCustomerAccounts = new Collection<Account> ();
-//All accounts with a Balance value greater than or equal to 1,000,000 must be tracked.
-//You need to populate the largeCustomerAccounts collection with Account objects.
-//Which code segment should you use?
+//Você cria uma coleção `contasEspeciais` para armazenar os objetos `Conta` usando o segmento de código a seguir:
+
+//```
+//Collection<Conta> contasEspeciais = new Collection<Conta>();
+//```
+//Todas as contas com um valor de saldo maior ou igual a 1.000.000 devem ser rastreadas.
+//Você precisa preencher a coleção `contasEspeciais` com objetos `Conta`.
+
+//Qual segmento de código você deve usar?
 
 //```
 //A
-//foreach (Customer customer in customerCollection)
+//foreach (Cliente cliente in clientes)
 //{
-//    foreach (Account account in customer.AccountCollection)
+//    foreach (Conta conta in cliente.Contas)
 //    {
-//        if (account.Balance >= l000000m)
+//        if (conta.Saldo >= 1000000m)
 //        {
-//            customer.AccountCollection.Add(account);
+//            cliente.Contas.Add(conta);
 //        }
 //    }
 //}
 
 //B
-//foreach (Account customer in customerCollection)
+//foreach (Cliente cliente in clientes)
 //{
-//    foreach (Account account in largeCustomerAccounts)
+//    foreach (Conta conta in contasEspeciais)
 //    {
-//        if (account.Balance >= l000000m)
+//        if (conta.Saldo >= 1000000m)
 //        {
-//            largeCustomerAccounts.Add(account);
+//            contasEspeciais.Add(conta);
 //        }
 //    }
 //}
 
 //C
-//foreach (Customer customer in customerCollection)
+//foreach (Cliente cliente in clientes)
 //{
-//    foreach (Account account in customer.AccountCollection)
+//    foreach (Conta conta in cliente.Contas)
 //    {
-//        if (account.Balance >= l000000m)
+//        if (conta.Saldo >= 1000000m)
 //        {
-//            largeCustomerAccounts.Add(account);
+//            contasEspeciais.Add(conta);
 //        }
 //    }
 //}
 
 //D
-//foreach (Account account in largeCustomerAccounts)
+//foreach (Conta conta in contasEspeciais)
 //{
-//    foreach (Customer customer in customerCollection)
+//    foreach (Cliente cliente in clientes)
 //    {
-//        if (account.Balance >= l000000m)
+//        if (conta.Saldo >= 1000000m)
 //        {
-//            customer.AccountCollection.Add(account);
+//            cliente.Contas.Add(conta);
 //        }
 //    }
 //}
 //```
 
-//RESPOSTA C.
-//Option C
 
